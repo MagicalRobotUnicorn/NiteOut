@@ -1,8 +1,9 @@
 User Auth
-  * Ability for a user to sign in and add a show to their calendar
+  * 
+  * Ability for a user the sign in and add a show to their calendar
 
 Database layer -> firebase
   * Association of events (concerts) -> other users
   * Select a restaurant
 
-
+Log searches on database layer
