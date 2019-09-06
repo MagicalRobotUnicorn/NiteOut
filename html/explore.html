@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../assets/css/exploreStyle.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Megrim&display=swap" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+  <header>
+    <!-- Top nav html -->
+    <nav class="navbar navbar-expand-lg fixed-top" data-spy="affix" data-offset-top="197">
+      <a href="#" class="navbar-brand">NiteOut</a>
+      <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
+        data-target="#collapsingNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsingNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-list active">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-list">
+            <a class="nav-link" href="events.html">Find an event</a>
+          </li>
+          <li class="nav-list">
+            <a class="nav-link" href="explore.html">Explore<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-list">
+            <a class="button nav-link" href="#">Test</a>
+          </li>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+            Login
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-backdrop="false">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="emailInput">Email Address</label>
+                      <input type="email" class="form-control" id="emailAdd" aria-describedby="emailHelp"
+                        placeholder="Enter email">
+                      <small id="emailHelp" class="form-text text-muted">We selling that data</small>
+
+                    </div>
+                    <div class="form-group">
+                      <label for="passInput">Password</label>
+                      <input type="password" class="form-control" id="check1">
+                    </div>
+                    <div class="form-group form-check">
+                      <input type="checkbox" class="form-check-input" id="check">
+                      <label class="form-check-label" for="check">Check it out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </nav>
+    </div>
+  </header>
+
+  <br />
+  <br />
+  <div class="container-fluid" id="about">
+    <div class="card">
+      <div class="card-header">
+        <h1>Explore a City, Have a NiteOut</h1>
+      </div>
+      <div class="card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Viverra nam libero justo laoreet sit amet cursus sit amet. Id ornare arcu odio ut sem nulla
+          pharetra diam sit. Dis parturient montes nascetur ridiculus mus. Quis vel eros donec ac. Aenean vel elit
+          scelerisque mauris. Tortor posuere ac ut consequat semper viverra nam. A erat nam at lectus urna. Adipiscing
+          bibendum est ultricies integer. Mauris nunc congue nisi vitae suscipit tellus mauris. Quis blandit turpis
+          cursus in. Feugiat scelerisque varius morbi enim nunc faucibus a. Viverra maecenas accumsan lacus vel
+          facilisis volutpat. Blandit turpis cursus in hac habitasse. Cursus euismod quis viverra nibh. Etiam dignissim
+          diam quis enim lobortis scelerisque. Vel pretium lectus quam id leo in vitae turpis massa. Et leo duis ut diam
+          quam nulla porttitor massa. Tortor condimentum lacinia quis vel eros donec ac odio.</p>
+        <p>Donec enim diam vulputate ut pharetra sit. Lectus mauris ultrices eros in cursus. Risus feugiat in ante
+          metus. Sagittis id consectetur purus ut faucibus pulvinar elementum integer. Risus ultricies tristique nulla
+          aliquet enim tortor. Odio euismod lacinia at quis risus sed vulputate odio. Magna eget est lorem ipsum dolor
+          sit amet consectetur. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque elit. Mauris vitae
+          ultricies leo integer malesuada nunc. Sed id semper risus in. Ultricies mi eget mauris pharetra et ultrices
+          neque. Scelerisque purus semper eget duis at tellus at. Tincidunt ornare massa eget egestas. Mauris ultrices
+          eros in cursus. Odio facilisis mauris sit amet massa vitae tortor condimentum.</p>
+      </div>
+    </div>
+  </div>
+
+  <form>
+    <div class="card-header">
+      <h2>Where are you looking?</h2>
+    </div>
+    <div class="form-row">
+      <div class="col-7">
+        <input type="text" class="form-control" placeholder="City">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="State">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Zip">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+  <br />
+  <div class="card-columns">
+    <div class="card">
+      <img src="../assets/images/venue.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Find the Best Shows, In Any City</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+          content. This content is a little bit longer.</p>
+      </div>
+    </div>
+    <div class="card p-3">
+      <blockquote class="blockquote mb-0 card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      </blockquote>
+    </div>
+    <div class="card">
+      <img src="../assets/images/departure.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card bg-primary text-white text-center p-3">
+      <blockquote class="blockquote mb-0">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+      </blockquote>
+    </div>
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This card has a regular title and short paragraphy of text below it.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="../assets/images/The-National.jpg" class="card-img-top" alt="...">
+    </div>
+    <div class="card p-3 text-right">
+      <blockquote class="blockquote mb-0">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      </blockquote>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is another card with title and supporting text below. This card has some additional
+          content to make it slightly taller overall.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
