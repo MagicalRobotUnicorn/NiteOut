@@ -24,13 +24,13 @@ body {
 
 
 
-    
 
-
-
+.form-group {
+    background-color: white; 
+    margin: 10px; 
+    border-radius: 1%; 
+    position: flex; 
 }
-
-
 
 .navbar-toggler{
     background-color: white; 
@@ -67,14 +67,9 @@ body {
     border-color: white;  
 }
 
-button {
-    color: red; 
-    background-color: blue; 
-}
 
-#button:hover{
-    background-color: green; 
-}
+
+
 
 #button {
     background: linear-gradient(to left, #1a1317, #361c2f, #51254b, #6c306c, #833c91, #8b45a7, #904fbe, #935ad6, #8a60e0, #7f67e9, #716df2, #5f73fb);
@@ -106,7 +101,8 @@ button {
 .nav-link:hover{
     color: yellow; 
     background-color: #913374; 
-    border-radius: 10%; 
+    border-radius: 20%; 
+    
 }
 
 
@@ -117,10 +113,14 @@ button {
 
 
 footer {
-    flex-shrink: 0; 
+    
     background-color: white; 
     display: block; 
     box-sizing: border-box; 
     border: 0px; 
     bottom: 0; 
+    position: fixed; 
+    width: 100%; 
+    margin: 0; 
+    
 }
