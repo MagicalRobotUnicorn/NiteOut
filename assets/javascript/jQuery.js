@@ -522,6 +522,31 @@ $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function()
 
 //////////////////////////////////////////////////////////////
 
+/*
+
+Event reply:
+{ id: 39043525,
+    popularity: 0.000008,
+    displayName:
+     'Strange and the Familiars at Alberta Street Pub (September 9, 2019)',
+    startDate: '2019-09-09',
+    startTime: '18:00:00',
+    latitude: 45.55893,
+    longitude: -122.65483 }
+
+  Display individual page: call to songkick api on event id:
+
+  Display each restaurant individually ->
+    * Each SW Card is representative of one restaurant
+
+  card id="response[i]"
+  img src="response[i].image_url"
+  text:
+    response[i].name
+    response[i].category
+    response[i].rating
+      * rating uses the yelp assets
+*/
 
 /*
   Sample site layout:
