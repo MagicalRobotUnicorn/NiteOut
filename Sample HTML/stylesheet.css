@@ -26,3 +26,8 @@
   margin-top: 4px;
   margin-bottom: 5px;
 }
+
+.card-body {
+  color: red; 
+  background-color: red; 
+}
