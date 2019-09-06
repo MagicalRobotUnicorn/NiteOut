@@ -473,19 +473,21 @@ function populateForm() {
     $button.attr('data-latitude', latitude);
     $button.attr('data-longitude', longitude);
 
-    $firstCol.append(displayName);
-    $secondCol.append($button);
     var $newRow = $('<tr>');
     var $concertCell = $('<tr>');
 
+    $firstCol.append(displayName);
+    $secondCol.append($button);
+
     $newRow.append('<td>' + displayName + '</td>');
     $concertCell.html($button);
+    $newRow.append($concertCell);
 
     $('#tableBody').append($newRow);
   }
 }
 
-$(document).ready(function(){
+// $(document).ready(function(){
   populateForm();
 
   var concertId = concertPage[0].id;
@@ -496,8 +498,7 @@ $(document).ready(function(){
   $button.attr('id', concertId);
   $button.attr('data-latitude', latitude);
   $button.attr('data-longitude', longitude);
-  $('#fuckthisshit').append($button);
-});
+
 
 
 $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function(){
