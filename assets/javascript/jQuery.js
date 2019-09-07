@@ -549,6 +549,24 @@ Event reply:
 */
 
 /*
+  Local Storage -> The user's individual concerts...
+
+  Date Object ->
+  Name as string
+  Id of concert
+  Name of restaurant
+  Id of restaurant
+
+  Confirm Event Page -> Attribute to Database
+*/
+
+/*
+  Firebase: tracking searches, user authorization
+
+  
+*/
+
+/*
   Sample site layout:
   In sampleSearch:
     tabs for:

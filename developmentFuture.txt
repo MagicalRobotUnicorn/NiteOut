@@ -1,3 +1,13 @@
+// Using local storage to pass info from one page to another
+
+// First page -> attribute 
+// Firebase -> apply search results from local storage
+
+// Display one:
 
 
+// Create app using node
+// Deploy app onto Heroku
 
+// Local storage for events
+// Implement Firebase
