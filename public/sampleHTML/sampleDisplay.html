@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lexend+Tera&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet.css">
+
+  </head>
+  <body>
+      <div id="headerImage">Concerts</div>
+      <div class="container">
+      <div class="row">
+        <div class="col-md-8" id="tableCol">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Event</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          
+        </tbody>
+      </table>
+      </div>
+      </div>
+      </div>
+      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script>
+    const url = require('url');
+
+
+function populateForm() {
+  for (var i = 0; i < concertPage.length; i++) {
+    var $firstCol = $('<div class="col-6-sm">');
+    var $secondCol = $('<div class="col-6-sm">');
+    
+    var displayName = concertPage[i].displayName;
+    var concertId = concertPage[i].id;
+    var latitude = concertPage[i].latitude;
+    var longitude = concertPage[i].longitude;
+
+    var $button = $('<button type="button" class="btn btn-primary btn-sm concertDetails">Details</button>');
+    $button.attr('id', concertId);
+    $button.attr('data-latitude', latitude);
+    $button.attr('data-longitude', longitude);
+
+    var $newRow = $('<tr>');
+    var $concertCell = $('<tr>');
+
+    $firstCol.append(displayName);
+    $secondCol.append($button);
+
+    $newRow.append('<td>' + displayName + '</td>');
+    $concertCell.html($button);
+    $newRow.append($concertCell);
+
+    $('#tableBody').append($newRow);
+  }
+}
+
+
+$(document).ready(function(){
+
+  console.log(window.location.href);
+
+  
+  }
+  
+
+
+
+);
+  </script>
+  </body>
+</html>
