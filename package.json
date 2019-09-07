@@ -1,0 +1,26 @@
+{
+  "name": "niteout",
+  "version": "1.0.0",
+  "description": "Node Implementation of the Niteout Application",
+  "main": "index.js",
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^1.19.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MagicalRobotUnicorn/NiteOut.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MagicalRobotUnicorn/NiteOut/issues"
+  },
+  "homepage": "https://github.com/MagicalRobotUnicorn/NiteOut#readme"
+}
