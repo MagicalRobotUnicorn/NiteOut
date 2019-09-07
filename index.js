@@ -9,13 +9,14 @@ const fs = require('fs');
 
 const server = http.createServer((req, res) => {
 
+  // The api calls
+  // 
   if (req.url === '/api/users') {
-       const users = [
-         {name: 'Bob Smith', age: '20'},
-         {name: 'Jay Smith', age: '25'}
-       ]
+    res.writeHead(200, {'Content-Type': 'application/json'});
+      res.end(content, 'utf8');
+    
   }
-  
+
   // Build file path
   let filePath = path.join(__dirname, 'public', req.url === '/' ? './sampleHTML/index.html' : './sampleHTML/' + req.url );
 
