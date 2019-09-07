@@ -130,3 +130,9 @@ h2 {
   padding: 15px;
 }
 
+.jumbotron{
+    background-image: linear-gradient(to left, #1a1317, #361c2f, #51254b);
+    position: relative; 
+    background-color: black; 
+    color: white; 
+}
