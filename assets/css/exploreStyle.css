@@ -52,10 +52,7 @@ footer {
   margin-left: 50px; 
   margin-top: 10px; 
   
-  
 }
-
-
 
 .list-group-item, .list-group-item-action {
   color: black; 
@@ -130,3 +127,9 @@ h2 {
   padding: 15px;
 }
 
+.jumbotron{
+    background-image: linear-gradient(to left, #1a1317, #361c2f, #51254b);
+    position: relative; 
+    background-color: black; 
+    color: white; 
+}
