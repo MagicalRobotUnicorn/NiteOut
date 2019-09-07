@@ -38,45 +38,6 @@
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
             Login
           </button>
-
-          <!-- Modal -->
-          <!-- <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-backdrop="false">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Want access to the latest news and deals?</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="form-group">
-                      <label for="emailInput">Email Address</label>
-                      <input type="email" class="form-control" id="emailAdd" aria-describedby="emailHelp"
-                        placeholder="Enter email">
-                      <small id="emailHelp" class="form-text text-muted">We selling that data</small>
-
-                    </div>
-                    <div class="form-group">
-                      <label for="passInput">Password</label>
-                      <input type="password" class="form-control" id="check1">
-                    </div>
-                    <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input" id="check">
-                      <label class="form-check-label" for="check">Check it out</label>
-                    </div>
-                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div> -->
         </ul>
       </div>
     </nav>
@@ -85,30 +46,49 @@
 
   <br />
   <br />
-  <div class="container-fluid" id="about">
-    <div class="card">
-      <div class="card-header">
-        <h1>Explore a City, Have a NiteOut</h1>
-      </div>
-      <div class="card-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Viverra nam libero justo laoreet sit amet cursus sit amet. Id ornare arcu odio ut sem nulla
-          pharetra diam sit. Dis parturient montes nascetur ridiculus mus. Quis vel eros donec ac. Aenean vel elit
-          scelerisque mauris. Tortor posuere ac ut consequat semper viverra nam. A erat nam at lectus urna. Adipiscing
-          bibendum est ultricies integer. Mauris nunc congue nisi vitae suscipit tellus mauris. Quis blandit turpis
-          cursus in. Feugiat scelerisque varius morbi enim nunc faucibus a. Viverra maecenas accumsan lacus vel
-          facilisis volutpat. Blandit turpis cursus in hac habitasse. Cursus euismod quis viverra nibh. Etiam dignissim
-          diam quis enim lobortis scelerisque. Vel pretium lectus quam id leo in vitae turpis massa. Et leo duis ut diam
-          quam nulla porttitor massa. Tortor condimentum lacinia quis vel eros donec ac odio.</p>
-        <p>Donec enim diam vulputate ut pharetra sit. Lectus mauris ultrices eros in cursus. Risus feugiat in ante
-          metus. Sagittis id consectetur purus ut faucibus pulvinar elementum integer. Risus ultricies tristique nulla
-          aliquet enim tortor. Odio euismod lacinia at quis risus sed vulputate odio. Magna eget est lorem ipsum dolor
-          sit amet consectetur. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque elit. Mauris vitae
-          ultricies leo integer malesuada nunc. Sed id semper risus in. Ultricies mi eget mauris pharetra et ultrices
-          neque. Scelerisque purus semper eget duis at tellus at. Tincidunt ornare massa eget egestas. Mauris ultrices
-          eros in cursus. Odio facilisis mauris sit amet massa vitae tortor condimentum.</p>
+  <div class="jumbotron">
+    <h1 class="display-4">Explore a City, Have a NiteOut</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+      featured content or information.</p>
+    <div class="container">
+      <div class="bd-example-fluid">
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://www.thechildrensgarden.com/wp-content/uploads/2018/06/tcg-downtown.jpg"
+                class="d-block w-90" alt="test">
+              <div class="carousel-caption d-none d-md-block">
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://www.thechildrensgarden.com/wp-content/uploads/2018/06/tcg-downtown.jpg"
+                class="h-block w-90" alt="test">
+
+              <div class="carousel-caption d-none d-md-block">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://www.thechildrensgarden.com/wp-content/uploads/2018/06/tcg-downtown.jpg"
+                class="d-block w-90" alt="test">
+
+              <div class="carousel-caption d-none d-md-block">
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
   </div>
 
   <form>
@@ -181,6 +161,9 @@
     </div>
   </div>
   <script src="../assets/javascript/exploreScript.js"></script>
+  <script src="../assets/javascript/apiScripts.js"></script>
+  <script src="../assets/javascript/functioningScripts.js"></script>
+  <script src="../assets/javascript/jQuery.js"></script>
 </body>
 
 </html>
