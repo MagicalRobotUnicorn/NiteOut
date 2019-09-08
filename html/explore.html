@@ -16,7 +16,7 @@
   <header>
     <!-- Top nav html -->
     <nav class="navbar navbar-expand-lg fixed-top" data-spy="affix" data-offset-top="197">
-      <a href="#" class="navbar-brand">NiteOut</a>
+      <a href="explore.html" class="navbar-brand">NiteOut</a>
       <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
         data-target="#collapsingNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -24,18 +24,16 @@
       <div class="collapse navbar-collapse" id="collapsingNavbar">
         <ul class="navbar-nav">
           <li class="nav-list active">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="explore.html">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-list">
             <a class="nav-link" href="events.html">Find an event</a>
           </li>
           <li class="nav-list">
-            <a class="nav-link" href="explore.html">Explore<span class="sr-only">(current)</span></a>
+            <a class="button nav-link" href="voting.html">Start Your Nite</a>
           </li>
-          <li class="nav-list">
-            <a class="button nav-link" href="#">Test</a>
-          </li>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+          <button type="button" id="loginButton" class="btn btn-primary" data-toggle="modal"
+            data-target="#exampleModalLong">
             Login
           </button>
         </ul>
@@ -43,6 +41,44 @@
     </nav>
     </div>
   </header>
+
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Login To Plan Your NiteOut</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="emailInput">Email Address</label>
+              <input type="email" class="form-control" id="emailAdd" aria-describedby="emailHelp"
+                placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We selling that data</small>
+
+            </div>
+            <div class="form-group">
+              <label for="passInput">Password</label>
+              <input type="password" class="form-control" id="check1">
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="check">
+              <label class="form-check-label" for="check">Check it out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <br />
   <br />
@@ -122,12 +158,12 @@
     <div class="card">
       <img src="../assets/images/departure.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">From Dives to Fine Dining, We've Got You Covered</h5>
         <p class="card-text">Find somewhere to eat and drink before or after your show. It's all up to you.</p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
-    <div class="card bg-primary text-white text-center p-3">
+    <div id="userReview" class="card bg-primary text-white text-center p-3">
       <blockquote class="blockquote mb-0">
         <p>"What an incredible app. This made planning my weekend shockingly easy." -A Super Cool Guy You Can Trust</p>
       </blockquote>

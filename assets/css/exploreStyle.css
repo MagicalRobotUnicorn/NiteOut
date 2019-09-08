@@ -133,3 +133,13 @@ h2 {
     background-color: black; 
     color: white; 
 }
+
+#userReview{
+  background-color: mediumorchid!important;
+}
+
+.btn-primary{
+  background-color: #51254b!important;
+  border-color: #51254b!important;
+
+}
