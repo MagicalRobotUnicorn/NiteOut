@@ -432,7 +432,7 @@ function searchConcerts() {
   var cityInput = $('#cityInput').val();
   var eventName = $('#eventName').val();
   var startDateRaw = $('#startDate').val();
-  var endDateRaw = $('endDate').val();
+  var endDateRaw = $('#endDate').val();
 
   var startDate = moment(startDateRaw).format("YYYY-MM-DD");
   var endDate = moment(endDateRaw).format("YYYY-MM-DD");
@@ -475,9 +475,9 @@ function populateForm() {
 
     $firstCol.append(displayName);
     $secondCol.append($button);
-    var $newRow = $('<div>');
+    var $newRow = $('<button>');
     $newRow.addClass('card-header');
-    var $concertCell = $('<div>');
+    var $concertCell = $('<span>');
     $concertCell.addClass('card-body')
 
     $newRow.append('<div>' + displayName + '</div>');
@@ -501,12 +501,21 @@ $(document).ready(function(){
   $('#fuckthisshit').append($button);
 });
 
+function addmodal(){
+  $('.card-header').on('click', function(){
+    console.log("I work"); 
+  }); 
+}
 
 $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function(){
   console.log("Id sent to function: " + $(this).attr('id'));
   console.log("Longitude: " + $(this).attr('data-longitude'));
   console.log("Latitude: " + $(this).attr('data-latitude'));
 })
+
+.on('click', function(){
+  console.log("test"); 
+}); 
 
 
 // Both the restaurants and the clubs are organized into collections of 25
