@@ -473,19 +473,21 @@ function populateForm() {
     $button.attr('data-latitude', latitude);
     $button.attr('data-longitude', longitude);
 
-    $firstCol.append(displayName);
-    $secondCol.append($button);
     var $newRow = $('<tr>');
     var $concertCell = $('<tr>');
 
+    $firstCol.append(displayName);
+    $secondCol.append($button);
+
     $newRow.append('<td>' + displayName + '</td>');
     $concertCell.html($button);
+    $newRow.append($concertCell);
 
     $('#tableBody').append($newRow);
   }
 }
 
-$(document).ready(function(){
+// $(document).ready(function(){
   populateForm();
 
   var concertId = concertPage[0].id;
@@ -496,8 +498,7 @@ $(document).ready(function(){
   $button.attr('id', concertId);
   $button.attr('data-latitude', latitude);
   $button.attr('data-longitude', longitude);
-  $('#fuckthisshit').append($button);
-});
+
 
 
 $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function(){
@@ -521,6 +522,49 @@ $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function()
 
 //////////////////////////////////////////////////////////////
 
+/*
+
+Event reply:
+{ id: 39043525,
+    popularity: 0.000008,
+    displayName:
+     'Strange and the Familiars at Alberta Street Pub (September 9, 2019)',
+    startDate: '2019-09-09',
+    startTime: '18:00:00',
+    latitude: 45.55893,
+    longitude: -122.65483 }
+
+  Display individual page: call to songkick api on event id:
+
+  Display each restaurant individually ->
+    * Each SW Card is representative of one restaurant
+
+  card id="response[i]"
+  img src="response[i].image_url"
+  text:
+    response[i].name
+    response[i].category
+    response[i].rating
+      * rating uses the yelp assets
+*/
+
+/*
+  Local Storage -> The user's individual concerts...
+
+  Date Object ->
+  Name as string
+  Id of concert
+  Name of restaurant
+  Id of restaurant
+
+  Confirm Event Page -> Attribute to Database
+*/
+
+/*
+  Firebase: tracking searches, user authorization
+
+  
+*/
 
 /*
   Sample site layout:

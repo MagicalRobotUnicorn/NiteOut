@@ -6,7 +6,7 @@ function getSongkickLocation(query) {
 
   fetch(queryURL).then(response => {
     response.json().then(function (json) {
-      console.log(json.resultsPage.results.location[0].metroArea.id);
+      return json.resultsPage.results.location[0].metroArea.id;
     });
   });
 }
@@ -44,7 +44,7 @@ function getSongkickShows(location, min_date, max_date, page) {
         individualResponse.longitude = individualEvent.venue.lng;
         responseArray.push(individualResponse);
       }
-      console.log(responseArray);
+      return responseArray;
     });
   });
 }
@@ -78,7 +78,7 @@ function getYelpInformation(latitude, longitude) {
 
         responseArray.push(individualResponse);
       }
-      console.log(responseArray);
+      return responseArray;
     });
   });
 }
@@ -106,7 +106,7 @@ function getEventDetails(idNumber) {
       individualResponse.latitude = individualEvent.venue.lat;
       individualResponse.longitude = individualEvent.venue.lng;
 
-      console.log(individualResponse);
+      return individualResponse;
     });
   }
 
@@ -135,7 +135,7 @@ function getRestaurantDetails(idNumber) {
 
       individualResponse.rating = response.rating;
 
-      console.log(individualResponse);
+      return individualResponse;
     });
   }
   )

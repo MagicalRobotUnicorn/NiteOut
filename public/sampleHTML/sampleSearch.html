@@ -27,9 +27,54 @@
               </div>
           <button id="searchSubmitButton" class="btn btn-primary">Submit</button>
         </form>
+        <div id="selectedShow">
+
+        </div>
+        <div id="searchResults">
+
+        </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="../jQuery.js"></script>
+    <script>
+
+// Search functions
+function searchConcerts() {
+  var cityInput = $('#cityInput').val();
+  var startDateRaw = $('#startDate').val();
+  var endDateRaw = $('#endDate').val();
+
+  var startDate = moment(startDateRaw).format("YYYY-MM-DD");
+  var endDate = moment(endDateRaw).format("YYYY-MM-DD");
+  
+  var returnObject = {};
+
+  returnObject.cityInput = cityInput;
+  returnObject.startDate = startDate;
+  returnObject.endDate = endDate;
+
+  return returnObject;
+}
+
+
+$('#searchSubmitButton').on('click', function (event) {
+  console.log('inside click event');
+  event.preventDefault();
+  var query = searchConcerts();
+  console.log(query);
+
+  var queryURL = "localhost:5000/api/songkicklocation?" + "cityInput=" + query.cityInput;
+
+  
+  $.ajax({
+    url: queryURL,
+    method: 'GET',
+    headers: {'Access-Control-Allow-Origin': '*'}
+  }).then(function(response){
+    console.log(response);
+  });
+});
+
+    </script>
   </body>
 </html>
