@@ -1,71 +1,75 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    </head>
-    
-    <body data-spy="scroll" data-target="#myScrollspy" data-offset="15">
-        <header>
-            <!-- Top nav html -->
-            <!-- Working to add a scrolling nav bar -->
-            <nav class="navbar navbar-expand-lg fixed-top" data-spy="affix" data-offset-top="197">
-                    <a href="explore.html" class="navbar-brand">NiteOut</a>
-                    <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="collapsingNavbar">
-                      <ul class="navbar-nav">
-                        <li class="nav-list active">
-                          <a class="nav-link" href="explore.html">Home<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-list">
-                          <a class="nav-link" href="#">Test</a>
-                        </li>
-                        <li class="nav-list">
-                          <a class="nav-link" href="#">Test</a>
-                        </li>
-                        <li class="nav-list">
-                          <a class="button nav-link" href="#">Test</a>
-                        </li>
-                      </ul>
-                    </div>
-            </nav>
-        </header>
-        <br></br></br>
-      
 
-        <div class="section" id="eventSection">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../assets/css/exploreStyle.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
-            <form>
-                <div class="form-group">
-                  <label for="city">City:</label>
-                  <input type="text" class="form-control" id="cityInput" placeholder="Enter the city and state (IE Portland, OR)">
-                
-                <div class="form-group">
-                  <label for="eventName">Event Name:</label>
-                  <input type="text" class="form-control" id="eventName" placeholder="Event Name">
-                
-                <div class="form-group">
-                  <label for="startDate">Start Date:</label>
-                  <input type="text" class="form-control" id="startDate" placeholder="Start Date">
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="15">
+  <header>
+    <!-- Top nav html -->
+    <!-- Working to add a scrolling nav bar -->
+    <nav class="navbar navbar-expand-lg fixed-top" data-spy="affix" data-offset-top="197">
+      <a href="#" class="navbar-brand">NiteOut</a>
+      <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
+        data-target="#collapsingNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsingNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-list active">
+            <a class="nav-link" href="explore.html">Home</a>
+          </li>
+          <li class="nav-list">
+            <a class="nav-link" href="events.html">Find an event</a>
+          </li>
+          <li class="nav-list">
+            <a class="button nav-link" href="voting.html">Start Your Nite</a>
+          </li>
+          <li class="nav-list">
+            <a class="button nav-link" href="assemble.html">Assemble the Group</a>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <br></br></br>
 
-        <div class="row">
-            <div class="container-fluid" id="eventDefault">
+
+  <div class="section" id="eventSection">
+
+    <form>
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text" class="form-control" id="cityInput" placeholder="Enter the city and state (IE Portland, OR)">
+
+        <div class="form-group">
+          <label for="eventName">Event Name:</label>
+          <input type="text" class="form-control" id="eventName" placeholder="Event Name">
+
+          <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="text" class="form-control" id="startDate" placeholder="Start Date">
+
+            <div class="row">
+              <div class="container-fluid" id="eventDefault">
                 <div class="card" stype=>
                   <div class="card-header">Near you</div>
                   <div class="card-body"></div>
                 </div>
-                  <div class="form-group">
-                    <label for="city">End Date:</label>
-                    <input type="text" class="form-control" id="endDate" placeholder="End Date">
-                    </div>
+                <div class="form-group">
+                  <label for="city">End Date:</label>
+                  <input type="text" class="form-control" id="endDate" placeholder="End Date">
+                </div>
                 <button id="searchSubmitButton" class="btn btn-primary">Submit</button>
-              </form>
+    </form>
 
-        <footer class="footer">
+    <footer class="footer">
 
-          <p>Test</p>
-        </footer>
-      </body>
+      <p>Test</p>
+    </footer>
+</body>
