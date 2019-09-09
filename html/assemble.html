@@ -65,7 +65,7 @@
                         <label for="comment">Let them know the plan</label>
                         <textarea class="form-control" rows="10" id="comment"></textarea>
                     </div>
-                    <button class="btn btn-primary" style="float:right;" id="mailto"><a href="#">Seize the
+                    <button class="btn btn-primary" style="float:right;" id="mailto"><a id ="mailer" href="#">Seize the
                             night</button>
                     <small id="terms" class="form-text text-muted">By clicking you agree to the terms and conditions we
                         have not exstablished yet.</small>
@@ -79,8 +79,17 @@
             $("#mailto").on('click', function(){
                 console.log("I work");
 
-                var email = $("#subjectTest").val().trim();  
+                var email = $("#emailTest").val().trim();  
+                var subject = $("#subjectTest").val().trim();  
+                var content = $("#comment").val().trim(); 
+                console.log(content); 
                 console.log(email); 
+                console.log(subject); 
+
+                $("#mailer").attr('href', 'mailto:' + email + '?subject=' + subject+ '&body=' + content); 
+            
+
+                
             });
         }); 
 
