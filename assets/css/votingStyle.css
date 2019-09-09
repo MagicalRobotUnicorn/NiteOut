@@ -81,7 +81,7 @@ body {
 
 #front {
     color: black; 
-    font-family: 
+    
 }
 
 
@@ -124,3 +124,8 @@ footer {
     margin: 0; 
     
 }
+.btn-primary{
+    background-color: #51254b!important;
+    border-color: #51254b!important;
+  
+  }
