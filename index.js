@@ -10,6 +10,7 @@ const apiCalls = require('./assets/javascript/apiScripts');
 
 const server = http.createServer((req, res) => {
   const headers = {
+
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
     'Access-Control-Max-Age': 2592000, // 30 days
@@ -95,7 +96,7 @@ const server = http.createServer((req, res) => {
 
   if (pathName === 'public/api/songkicklocation') {
     console.log('Accessed');
-    var city = searchParams.cityInput
+    var city = searchParams.cityInput;
     var queryURL = 'https://api.songkick.com/api/3.0/search/locations.json?apikey=NBBXfIsma0WxaO7n&query=' + query;
     fetch(queryURL).then(response => {
       response.json().then(function (json) {
