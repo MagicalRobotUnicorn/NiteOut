@@ -14,11 +14,18 @@ function searchConcerts() {
   returnObject.cityInput = cityInput;
   returnObject.startDate = startDate;
   returnObject.endDate = endDate;
-
 }
 
 $('#searchSubmitButton').on('click', function (event) {
   console.log('inside click event');
   event.preventDefault();
   var query = searchConcerts();
+
+  
+  $.ajax({
+    url: queryURL,
+    method: 'GET'
+  }).then(function(response){
+    
+  });
   });
