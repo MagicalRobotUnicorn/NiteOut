@@ -70,7 +70,7 @@ function populateRestaurants(response, idNumber) {
   var rowCount = 0;
 
   for (var i = 0; i < response.length; i++) {
-    var $genericRestaurant = $('<div class="col-3">').addClass('restaurant');
+    var $genericRestaurant = $('<div class="col-5">').addClass('restaurant');
     $genericRestaurant.addClass('container');
 
     $genericRestaurant.append('<div class="row" id="row">');
@@ -78,8 +78,8 @@ function populateRestaurants(response, idNumber) {
     $genericRestaurant.find('#row').append('<div class="col-6" id="firstCol">');
     $genericRestaurant.find('#row').append('<div class="col-6" id="secondCol">');
 
-    var $firstCol = $('<div class="col-6" id="firstCol">');
-    var $secondCol = $('<div class="col-6" id="secondCol">');
+    var $firstCol = $('<div class="col-6 interiorRestaurant" id="firstCol">');
+    var $secondCol = $('<div class="col-6 interiorRestaurant" id="secondCol">');
 
     // Set up as -> $firstCol -> add content -> append to container
     // $secondCol -> add content -> append to container
@@ -88,17 +88,45 @@ function populateRestaurants(response, idNumber) {
     $firstCol.append('<img src="' + response[i].image_url + '" class="restaurantImage">');
     $secondCol.append('<div class="restaurantName">' + response[i].name + '</div>');
     $secondCol.append('<div class="restaurantCategory">' + response[i].categories + '</div>');
+
     // use response to generate stars
+    var starRaw;
 
-    var starFile;
-    console.log(response[i].rating);
-    if ((response[i].rating) % (response[i].rating) != 0){
+    switch (response[i].rating){
+      case 0:
+        starRaw = '0';
+        break;
+      case 1:
+        starRaw = '1'
+        break;
+      case 1.5:
+        starRaw = '1_half';
+        break;
+      case 2.0:
+        starRaw = '2';
+        break;
+      case 2.5:
+        starRaw = '2_half';
+        break;
+      case 3:
+        starRaw = '3';
+        break;
+      case 3.5:
+        starRaw = '3_half';
+        break;
+      case 4:
+        starRaw = '4';
+        break;
+      case 4.5:
+        starRaw = '4_half';
+        break;
+      case 5:
+        starRaw = '5';
+        break;
+    }
 
-      starFile = './assets/images/yelp_stars/web_and_ios/small/' + 'small_' + response[i].rating[0] + '_half.png';
-    }
-    else {
-      starFile = './assets/images/yelp_stars/web_and_ios/small/' + 'small_' + response[i].rating[0] + '_half.png';
-    }
+    // console.log(response[i].rating);
+    starFile = './assets/images/yelp_stars/web_and_ios/small/' + 'small_' + starRaw + '.png';
 
     $secondCol.append('<div class="restaurantRating"><img src="' + starFile + '" class="starImage">');
 
@@ -114,7 +142,7 @@ function populateRestaurants(response, idNumber) {
     $allRestaurants.append($genericRestaurant);
 
     rowCount++;
-    if (rowCount === 2){
+    if (rowCount === 1){
       $allRestaurants.append($newRow);
       rowCount = 0;
     }
