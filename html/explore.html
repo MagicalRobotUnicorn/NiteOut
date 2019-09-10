@@ -27,13 +27,10 @@
             <a class="nav-link" href="explore.html">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-list">
-            <a class="nav-link" href="events.html">Find an Event</a>
+            <a class="nav-link" href="events.html">Find an event</a>
           </li>
           <li class="nav-list">
             <a class="button nav-link" href="voting.html">Start Your Nite</a>
-          </li>
-          <li class="nav-list">
-            <a class="button nav-link" href="assemble.html">Assemble the Group</a>
           </li>
           <button type="button" id="loginButton" class="btn btn-primary" data-toggle="modal"
             data-target="#exampleModalLong">
@@ -46,7 +43,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Login To Plan Your NiteOut</h5>
+                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -68,12 +65,12 @@
                       <input type="checkbox" class="form-check-input" id="check">
                       <label class="form-check-label" for="check">Check it out</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+
                   </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
                 </div>
               </div>
             </div>
@@ -84,7 +81,43 @@
     </div>
   </header>
 
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Login To Plan Your NiteOut</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="emailInput">Email Address</label>
+              <input type="email" class="form-control" id="emailAdd" aria-describedby="emailHelp"
+                placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We selling that data</small>
 
+            </div>
+            <div class="form-group">
+              <label for="passInput">Password</label>
+              <input type="password" class="form-control" id="check1">
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="check">
+              <label class="form-check-label" for="check">Check it out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <br />
   <br />
@@ -136,13 +169,13 @@
     </div>
     <div class="form-row">
       <div class="col-7">
-        <input type="text" class="form-control" id="eventCity" placeholder="City">
+        <input type="text" class="form-control" placeholder="City">
       </div>
       <div class="col">
-        <input type="text" class="form-control" id="eventState" placeholder="State">
+        <input type="text" class="form-control" placeholder="State">
       </div>
-      <div class="clearfix">
-        <!-- <input type="text" class="form-control" placeholder="Zip"> -->
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Zip">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
@@ -158,7 +191,7 @@
     </div>
     <div class="card p-3">
       <blockquote class="blockquote mb-0 card-body">
-        <p>Niteout is the place to go to find your favorite events.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
       </blockquote>
     </div>
     <div class="card">
@@ -176,8 +209,8 @@
     </div>
     <div class="card text-center">
       <div class="card-body">
-        <h5 class="card-title">"You won't find any other app like this"</h5>
-        <p class="card-text">You won't need any other app when you have Niteout on your phone.</p>
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This card has a regular title and short paragraphy of text below it.</p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
@@ -186,13 +219,14 @@
     </div>
     <div class="card p-3 text-right">
       <blockquote class="blockquote mb-0">
-        <p> It's a place where not you can find an event, but its all about the nightlife.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
       </blockquote>
     </div>
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">"NITEOUT OR BUST DOWN"</h5>
-        <p class="card-text">Niteout is the app you need to get, so get on it!</p>
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is another card with title and supporting text below. This card has some additional
+          content to make it slightly taller overall.</p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
