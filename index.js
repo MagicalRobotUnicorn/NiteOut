@@ -72,21 +72,23 @@ const server = http.createServer((req, res) => {
 
       })
     });
+  }
 
     if (pathName === '/api/songkickshows') {
       var location = parametersObject.location;
       var min_date = parametersObject.min_date;
-      var max_date = paramtersObject.max_date;
+      var max_date = parametersObject.max_date;
       var page = parametersObject.page;
 
       if (min_date != '') {
-        var startDate = '&min_date=' + min_date;
-      }
-      if (max_date != '') {
-        var endDate = '&max_date=' + max_date;
+         var startDate = '&min_date=' + min_date;
+       }
+       if (max_date != '') {
+      var endDate = '&max_date=' + max_date;
       }
       var queryURL = 'https://api.songkick.com/api/3.0/metro_areas/' + location + '/calendar.json?apikey=NBBXfIsma0WxaO7n' + startDate + endDate + '&page=' + page + '&per_page=25';
 
+      console.log(queryURL);
       fetch(queryURL).then(response => {
         response.json().then(function (response) {
           var responseArray = [];
@@ -112,12 +114,14 @@ const server = http.createServer((req, res) => {
             individualResponse.longitude = individualEvent.venue.lng;
             responseArray.push(individualResponse);
           }
+
           res.writeHead(200, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify(responseArray));
         });
       });
     }
-  }
+  
+
   if (pathName === '/api/yelpinformation') {
     var latitude = parametersObject.latitude;
     var longitude = parametersObject.longitude;
@@ -242,6 +246,7 @@ const server = http.createServer((req, res) => {
     });
   }
 });
+
 
 
 const PORT = process.env.PORT || 5000;
