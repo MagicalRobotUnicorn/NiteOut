@@ -1,7 +1,6 @@
 // Search functions
 function searchConcerts() {
   var cityInput = $('#cityInput').val();
-  var eventName = $('#eventName').val();
   var startDateRaw = $('#startDate').val();
   var endDateRaw = $('#endDate').val();
 
@@ -13,13 +12,13 @@ function searchConcerts() {
   $.ajax({
     url: queryURL,
     method: 'GET'
-  }).then(function(response){
+  }).then(function (response) {
     console.log(response);
     var secondURL = '/api/songkickshows?location=' + response.cityCode + '&min_date=' + startDate + '&max_date=' + endDate + '&page=1';
     $.ajax({
       url: secondURL,
       method: 'GET'
-    }).then(function(response) {
+    }).then(function (response) {
       populateForm(response);
     })
   });
@@ -37,7 +36,7 @@ function populateForm(concertPage) {
   for (var i = 0; i < concertPage.length; i++) {
     var $firstCol = $('<div class="col-6-sm">');
     var $secondCol = $('<div class="col-6-sm">');
-    
+
     var displayName = concertPage[i].displayName;
     var concertId = concertPage[i].id;
     var latitude = concertPage[i].latitude;
@@ -62,36 +61,57 @@ function populateForm(concertPage) {
   }
 }
 
-function populateRestaurants(response, idNumber){
+function populateRestaurants(response, idNumber) {
   console.log(response);
 
   var $allRestaurants = $('<div>');
-  for (var i = 0; i < response.length; i++){
-    var $newDiv = $('<div class="eachRestaurant container">');
-    var $pictureDiv = $('<div class="col-4">');
-    $pictureDiv.append('<img src="' + response[i].image_url + '" class="restaurantImage">');
-    var $infoDiv = $('<div class="col-8">');
-    $infoDiv.append('<h2 class="restaurantName">' + response[i].name + '</h2>');
-    $infoDiv.append('<h2 class="restaurantCategory">' + response[i].categories + '</h2>');
-    $infoDiv.append('<h2 class="restaurantRating">' + response[i].rating + '</h2>');
+  for (var i = 0; i < response.length; i++) {
+    var $genericRestaurant = $('<div>').addClass('restaurant');
+    $genericRestaurant.attr("id", i);
+    $genericRestaurant.append('<div class="row" id="row' + i + '">');
+    $genericRestaurant.find('#row' + i).append('<div class="col-6" id="firstCol' + i + '">');
+    $genericRestaurant.find('#row' + i).append('<div class="col-6" id="secondCol' + i + '">');
 
+
+    $genericRestaurant.find('#firstCol' + i).append('<img src="' + response[i].image_url + ' class="characterImage">');
+    $genericRestaurant.find('#secondCol' + i).append('<div class="restaurantName" id="' + i + '">');
+    $genericRestaurant.find('#secondCol' + i).append('<div class="restaurantCategory" id="' + i + '">');
+    // use response to generate stars
+    $genericRestaurant.find('#secondCol' + i).append('<div class="restaurantRating id="' + i + '">');
+    // Append button here
     var $button = $('<button type="button" class="btn btn-primary btn-sm restaurantSelect">Select</button>');
     $button.attr('data-concertId', idNumber);
     $button.attr('data-restaurantId', response[i].id);
+    $genericRestaurant.find('#secondCol' + i).append('<div class="buttonArea" id="' + i + '">');
 
-    $infoDiv.append($button);
-    $newDiv.append($pictureDiv);
-    $newDiv.append($infoDiv);
-    $newDiv.append($button);
+    $characterSelection.append($genericCharacter);
 
-    $allRestaurants.append($newDiv);
   }
-  $('#restaurantResults').append($allRestaurants);
+  var $newDiv = $('<div class="eachRestaurant container">');
+  var $pictureDiv = $('<div class="col-4">');
+  $pictureDiv.append('<img src="' + response[i].image_url + '" class="restaurantImage">');
+  var $infoDiv = $('<div class="col-8">');
+  $infoDiv.append('<h2 class="restaurantName">' + response[i].name + '</h2>');
+  $infoDiv.append('<h2 class="restaurantCategory">' + response[i].categories + '</h2>');
+  $infoDiv.append('<h2 class="restaurantRating">' + response[i].rating + '</h2>');
+
+  var $button = $('<button type="button" class="btn btn-primary btn-sm restaurantSelect">Select</button>');
+  $button.attr('data-concertId', idNumber);
+  $button.attr('data-restaurantId', response[i].id);
+
+  $infoDiv.append($button);
+  $newDiv.append($pictureDiv);
+  $newDiv.append($infoDiv);
+  $newDiv.append($button);
+
+  $allRestaurants.append($newDiv);
+}
+$('#restaurantResults').append($allRestaurants);
 }
 
-function confirmPlans(eventDetails, restaurantDetails){
+function confirmPlans(eventDetails, restaurantDetails) {
   var $newDiv = $('<div class="container confirmPlansContainer">');
-  
+
   $newDiv.append('Great! So you are going to see: ' + eventDetails.displayName);
   $newDiv.append('And then you are going to ' + restaurantDetails.name);
 
@@ -107,7 +127,7 @@ function confirmPlans(eventDetails, restaurantDetails){
 
 // On back, call the metroId again
 
-$('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function(){
+$('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function () {
 
   var idNumber = $(this).attr('id');
   var longitude = $(this).attr('data-longitude');
@@ -115,18 +135,18 @@ $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function()
 
   var queryURL = './api/songkicklocation' + '?cityInput=' + cityInput;
 
-  var queryURL = './api/yelpinformation' + '?latitude=' +latitude + "&longitude=" + longitude;
+  var queryURL = './api/yelpinformation' + '?latitude=' + latitude + "&longitude=" + longitude;
   $.ajax({
     url: queryURL,
     method: 'GET'
-  }).then(function(response){
+  }).then(function (response) {
     populateRestaurants(response, idNumber);
   });
 });
 
 // On back, call the concert Id and get the restaurants
 
-$('body').on('click', 'button.btn.btn-primary.btn-sm.restaurantSelect', function(){
+$('body').on('click', 'button.btn.btn-primary.btn-sm.restaurantSelect', function () {
   var concertId = $(this).attr('data-concertId');
   var restaurantId = $(this).attr('data-restaurantId');
   var eventDetails;
@@ -136,22 +156,22 @@ $('body').on('click', 'button.btn.btn-primary.btn-sm.restaurantSelect', function
   $.ajax({
     url: queryURL,
     method: 'GET'
-  }).then(function(response){
+  }).then(function (response) {
     eventDetails = response;
 
     var secondQuery = './api/restaurantdetails?idNumber=' + restaurantId;
     $.ajax({
       url: secondQuery,
       method: 'GET'
-    }).then(function(response){
+    }).then(function (response) {
       restaurantDetails = response;
       confirmPlans(eventDetails, restaurantDetails);
+    });
+
   });
-  
-});
 });
 
-$('body').on('click', 'button.btn.btn-primary.btn-sm.confirmPlansButton', function(){
+$('body').on('click', 'button.btn.btn-primary.btn-sm.confirmPlansButton', function () {
   var concertId = $(this).attr('data-concertId');
   var restaurantId = $(this).attr('data-restaurantId');
   var storedEvents = JSON.parse(localStorage.getItem("storedEvents"));
@@ -176,6 +196,6 @@ $('body').on('click', 'button.btn.btn-primary.btn-sm.confirmPlansButton', functi
 /*
   Firebase: tracking searches, user authorization
 
-  
+
 */
 
