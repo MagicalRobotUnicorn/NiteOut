@@ -91,6 +91,7 @@ function populateRestaurants(response, idNumber) {
     }
 
     $genericRestaurant.find('#secondCol').append('<div class="restaurantRating"><img src="' + starFile + '" class="starImage">');
+    
     // Append button here
     var $button = $('<button type="button" class="btn btn-primary btn-sm restaurantSelect">Select</button>');
     $button.attr('data-concertId', idNumber);
