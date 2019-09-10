@@ -1,17 +1,17 @@
 let fetch = require('node-fetch');
 
-function getSongkickLocation(query) {
+async function getSongkickLocation(query) {
   // Switch statement based on query information passed to function
   var queryURL = 'https://api.songkick.com/api/3.0/search/locations.json?apikey=NBBXfIsma0WxaO7n&query=' + query;
 
   fetch(queryURL).then(response => {
     response.json().then(function (json) {
-      return json.resultsPage.results.location[0].metroArea.id;
+      return (json.resultsPage.results.location[0].metroArea.id);
     });
   });
 }
 
-function getSongkickShows(location, min_date, max_date, page) {
+async function getSongkickShows(location, min_date, max_date, page) {
   if (min_date != '') {
     var startDate = '&min_date=' + min_date;
   }
@@ -44,13 +44,13 @@ function getSongkickShows(location, min_date, max_date, page) {
         individualResponse.longitude = individualEvent.venue.lng;
         responseArray.push(individualResponse);
       }
-      return responseArray;
+      console.log(responseArray);
     });
   });
 }
 
 
-function getYelpInformation(latitude, longitude) {
+async function getYelpInformation(latitude, longitude) {
   var queryURL = 'https://api.yelp.com/v3/businesses/search?latitude=' + latitude + '&longitude=' + longitude;
 
   var myHeaders = [];
@@ -78,12 +78,12 @@ function getYelpInformation(latitude, longitude) {
 
         responseArray.push(individualResponse);
       }
-      return responseArray;
+      console.log(responseArray);
     });
   });
 }
 
-function getEventDetails(idNumber) {
+async function getEventDetails(idNumber) {
   var queryURL = 'https://api.songkick.com/api/3.0/events/' + idNumber + '.json?apikey=NBBXfIsma0WxaO7n';
 
   fetch(queryURL).then(response => {
@@ -113,7 +113,7 @@ function getEventDetails(idNumber) {
   )
 }
 
-function getRestaurantDetails(idNumber) {
+async function getRestaurantDetails(idNumber) {
 
   var queryURL = 'https://api.yelp.com/v3/businesses/' + idNumber;
   console.log(queryURL);
@@ -135,7 +135,7 @@ function getRestaurantDetails(idNumber) {
 
       individualResponse.rating = response.rating;
 
-      return individualResponse;
+      console.log(individualResponse);
     });
   }
   )
