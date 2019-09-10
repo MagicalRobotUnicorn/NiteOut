@@ -65,48 +65,49 @@ function populateRestaurants(response, idNumber) {
   console.log(response);
 
   var $allRestaurants = $('<div>');
+  var $newRow = $('<div class="row">');
+  $allRestaurants.append($newRow);
+  var rowCount = 0;
+
   for (var i = 0; i < response.length; i++) {
-    var $genericRestaurant = $('<div>').addClass('restaurant');
-    $genericRestaurant.attr("id", i);
+    var $genericRestaurant = $('<div class="col-3">').addClass('restaurant');
     $genericRestaurant.append('<div class="row" id="row' + i + '">');
-    $genericRestaurant.find('#row' + i).append('<div class="col-6" id="firstCol' + i + '">');
-    $genericRestaurant.find('#row' + i).append('<div class="col-6" id="secondCol' + i + '">');
+    $genericRestaurant.find('#row').append('<div class="col-6" id="firstCol">');
+    $genericRestaurant.find('#row').append('<div class="col-6" id="secondCol">');
 
 
-    $genericRestaurant.find('#firstCol' + i).append('<img src="' + response[i].image_url + ' class="characterImage">');
-    $genericRestaurant.find('#secondCol' + i).append('<div class="restaurantName" id="' + i + '">');
-    $genericRestaurant.find('#secondCol' + i).append('<div class="restaurantCategory" id="' + i + '">');
+    $genericRestaurant.find('#firstCol').append('<img src="' + response[i].image_url + ' class="restaurantImage">');
+    $genericRestaurant.find('#secondCol').append('<div class="restaurantName">' + response[i].name + '</div>');
+    $genericRestaurant.find('#secondCol').append('<div class="restaurantCategory">' + response[i].categories + '</div>');
     // use response to generate stars
-    $genericRestaurant.find('#secondCol' + i).append('<div class="restaurantRating id="' + i + '">');
+
+    var starFile;
+
+    if (response[i].rating[0] % response[i].rating[0] != 0){
+      starFile = './assets/images/yelp_stars/web_and_ios/small/' + 'small_' + response[i].rating[0] + '_half.png';
+    }
+    else {
+      starFile = './assets/images/yelp_stars/web_and_ios/small/' + 'small_' + response[i].rating[0] + '_half.png';
+    }
+
+    $genericRestaurant.find('#secondCol').append('<div class="restaurantRating"><img src="' + starFile + '" class="starImage">');
     // Append button here
     var $button = $('<button type="button" class="btn btn-primary btn-sm restaurantSelect">Select</button>');
     $button.attr('data-concertId', idNumber);
     $button.attr('data-restaurantId', response[i].id);
-    $genericRestaurant.find('#secondCol' + i).append('<div class="buttonArea" id="' + i + '">');
+    $genericRestaurant.find('#secondCol').append('<div class="buttonArea">');
+    $genericRestaurant.find('.buttonArea').append($button);
 
-    $characterSelection.append($genericCharacter);
+    $allRestaurants.append($genericRestaurant);
+
+    rowCount++;
+    if (rowCount === 2){
+      $allRestaurants.append($newRow);
+      rowCount = 0;
+    }
 
   }
-  var $newDiv = $('<div class="eachRestaurant container">');
-  var $pictureDiv = $('<div class="col-4">');
-  $pictureDiv.append('<img src="' + response[i].image_url + '" class="restaurantImage">');
-  var $infoDiv = $('<div class="col-8">');
-  $infoDiv.append('<h2 class="restaurantName">' + response[i].name + '</h2>');
-  $infoDiv.append('<h2 class="restaurantCategory">' + response[i].categories + '</h2>');
-  $infoDiv.append('<h2 class="restaurantRating">' + response[i].rating + '</h2>');
-
-  var $button = $('<button type="button" class="btn btn-primary btn-sm restaurantSelect">Select</button>');
-  $button.attr('data-concertId', idNumber);
-  $button.attr('data-restaurantId', response[i].id);
-
-  $infoDiv.append($button);
-  $newDiv.append($pictureDiv);
-  $newDiv.append($infoDiv);
-  $newDiv.append($button);
-
-  $allRestaurants.append($newDiv);
-}
-$('#restaurantResults').append($allRestaurants);
+  $('#restaurantResults').append($allRestaurants);
 }
 
 function confirmPlans(eventDetails, restaurantDetails) {

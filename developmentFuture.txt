@@ -15,3 +15,11 @@ Where we need to be by noon:
 
 Empty Image:
 https://rationalvanity.blogspot.com/2012/04/nothing-to-see-here.html
+
+
+if (response[i].rating[0] % response[i].rating[0] != 0){
+  'small_' + response[i].rating[0] + '_half.png';
+}
+else {
+  'small_' + response[i].rating[0] + '_half.png';
+}
