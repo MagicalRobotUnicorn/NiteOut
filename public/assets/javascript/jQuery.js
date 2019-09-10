@@ -1,11 +1,3 @@
-// Sample data from API returns
-// Variables are: singleLocation, restaurantCollection, singleConcert, concertPage, metroCode
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-// Variables are: singleLocation, restaurantCollection, singleConcert, concertPage, metroCode
-
 // Search functions
 function searchConcerts() {
   var cityInput = $('#cityInput').val();
@@ -177,57 +169,9 @@ $('body').on('click', 'button.btn.btn-primary.btn-sm.confirmPlansButton', functi
   localStorage.setItem("storedEvents", JSON.stringify(storedEvents));
   alert("Event Saved");
 });
-// Both the restaurants and the clubs are organized into collections of 25
 
-// Display all events
-// Using the prototype of the train schedule from class
 
-// Display single event
-// Header -> Event (RSVP Button)
-// Body -> Make divs
 
-// Display single bar
-// Diplay Event and Bar Together -> Confirm Plans thing
-
-//////////////////////////////////////////////////////////////
-
-/*
-
-Event reply:
-{ id: 39043525,
-    popularity: 0.000008,
-    displayName:
-     'Strange and the Familiars at Alberta Street Pub (September 9, 2019)',
-    startDate: '2019-09-09',
-    startTime: '18:00:00',
-    latitude: 45.55893,
-    longitude: -122.65483 }
-
-  Display individual page: call to songkick api on event id:
-
-  Display each restaurant individually ->
-    * Each SW Card is representative of one restaurant
-
-  card id="response[i]"
-  img src="response[i].image_url"
-  text:
-    response[i].name
-    response[i].category
-    response[i].rating
-      * rating uses the yelp assets
-*/
-
-/*
-  Local Storage -> The user's individual concerts...
-
-  Date Object ->
-  Name as string
-  Id of concert
-  Name of restaurant
-  Id of restaurant
-
-  Confirm Event Page -> Attribute to Database
-*/
 
 /*
   Firebase: tracking searches, user authorization
@@ -235,17 +179,3 @@ Event reply:
   
 */
 
-/*
-  Sample site layout:
-  In sampleSearch:
-    tabs for:
-      *search by concert
-      *search by city
-  In sample display:
-    Output is displayed in table
-    One line per event
-    Button for select -> goes to sampleDisplay
-  In sample display:
-    Show information
-    Nearby restaurants
-*/

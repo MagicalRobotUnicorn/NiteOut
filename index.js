@@ -2,25 +2,11 @@ const http = require('http');
 const path = require('path');
 const fetch = require('node-fetch')
 const fs = require('fs');
-const url = require('url');
-const apiCalls = require('./assets/javascript/apiScripts');
-
-// We need to create the routing urls for each of the responses
-// The calls to the API's are going to be in the format of 'application/json'
-// We are then calling the AJAX function from within our code to get our response
 
 
 const server = http.createServer((req, res) => {
-  const headers = {
-
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
-    'Access-Control-Max-Age': 2592000, // 30 days
-  };
-
-
+  
   var pathName = req.url.split("?");
-  console.log(pathName[0], pathName[1]);
   var parametersObject = {};
 
   if (!pathName[1]) {
@@ -36,23 +22,17 @@ const server = http.createServer((req, res) => {
     }
 
     pathName = pathName[0];
-    console.log(parametersObject);
-
   }
 
   if (pathName === '/api/songkicklocation') {
-    console.log('Accessed');
     var city = parametersObject.cityInput;
     var queryURL = 'https://api.songkick.com/api/3.0/search/locations.json?apikey=NBBXfIsma0WxaO7n&query=' + city;
     fetch(queryURL).then(response => {
       response.json().then(function (json) {
         var content = ((json.resultsPage.results.location[0].metroArea.id));
-        console.log(content);
         var returnObject = {};
-        var returnArray = []
         returnObject.cityCode = content;
 
-        console.log(returnObject);
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify(returnObject));
       });
@@ -65,9 +45,6 @@ const server = http.createServer((req, res) => {
 
     fetch(queryURL).then(response => {
       response.json().then(response => {
-        console.log('gotHere');
-        console.log(response);
-        console.log(response.resultsPage.results.event)
         var individualEvent = response.resultsPage.results.event;
         var individualResponse = {};
 
@@ -107,11 +84,9 @@ const server = http.createServer((req, res) => {
       }
       var queryURL = 'https://api.songkick.com/api/3.0/metro_areas/' + location + '/calendar.json?apikey=NBBXfIsma0WxaO7n' + startDate + endDate + '&page=' + page + '&per_page=25';
 
-      console.log(queryURL);
       fetch(queryURL).then(response => {
         response.json().then(function (response) {
           var responseArray = [];
-          console.log(response);
 
           for (var i = 0; i < response.resultsPage.results.event.length; i++) {
             var individualEvent = response.resultsPage.results.event[i];
@@ -176,7 +151,6 @@ const server = http.createServer((req, res) => {
     }
 
     else if (pathName === '/api/restaurantdetails') {
-      console.log('Accessed');
       var idNumber = parametersObject.idNumber;
       var queryURL = 'https://api.yelp.com/v3/businesses/' + idNumber;
   
@@ -205,17 +179,15 @@ const server = http.createServer((req, res) => {
     }
 
   else {
-  // Build file path
-  let filePath = path.join(__dirname, 'public', req.url === '/' ? '/sampleHTML/sampleSearch.html' : req.url);
-  // if (req.url === '/') {
-  //   filePath = path.join(__dirname, 'public', 'sampleHTML')
-  // }
+  
+  let filePath = path.join(__dirname, 'public', 'sampleHTML', req.url === '/' ? '/sampleSearch.html' : req.url);
 
   // Extension of the file
   let extname = path.extname(filePath);
 
   // Initial content type
   let contentType = 'text/html';
+
 
   // Check ext and set content type
   switch (extname) {
@@ -235,6 +207,7 @@ const server = http.createServer((req, res) => {
       contentType = 'image/jpg';
       break;
   }
+  console.log(filePath, contentType);
 
   fs.readFile(filePath, (err, content) => {
     if (err) {
@@ -249,7 +222,6 @@ const server = http.createServer((req, res) => {
         res.end(`Server Error: ${err.code}`)
       }
     } else {
-      console.log(content);
       res.writeHead(200, {'Content-Type': contentType });
       res.end(content, 'utf8');
     }

@@ -3,7 +3,7 @@
   width: 100%;
   height: 150px;
   font-size: 60px;
-  background: black;
+  background: rgb(44, 31, 92);
   color: white;
   text-align: center;
   font-family: 'Lexend Tera', sans-serif;
@@ -30,4 +30,28 @@
 .card-body {
   color: red; 
   background-color: red; 
+}
+
+#selectedShow {
+  display: none;
+}
+
+#concertSearchResults {
+  display: none;
+}
+
+#restaurantResults {
+  display: none;
+}
+
+#confirmPlans {
+  display: none;
+}
+
+#loadingScreen {
+  display: none;
+}
+
+#introParagraph {
+  
 }

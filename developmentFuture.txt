@@ -1,0 +1,13 @@
+Where we need to be by noon:
+
+1. Use CSS Rules to displaynone on the divs that aren't being used
+2. Have a loading screen between calls (bootstrap loading animation)
+3. Use the leftover resources from the starwars application to code the restaurant divs
+4. Insert the necessary logos from yelp and songkick to the displays
+
+5. Design an events page
+6. Reuse code from the giftastic assignment to display the individual events
+7. Design 404 page
+
+8. Edge cases (no area found, no concerts found, no restaurants found)
+
