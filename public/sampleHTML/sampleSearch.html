@@ -14,10 +14,6 @@
             <input type="text" class="form-control" id="cityInput" placeholder="Enter the city and state (IE Portland, OR)">
           </div>
           <div class="form-group">
-            <label for="eventName">Event Name:</label>
-            <input type="text" class="form-control" id="eventName" placeholder="Event Name">
-          </div>
-          <div class="form-group">
             <label for="startDate">Start Date:</label>
             <input type="text" class="form-control" id="startDate" placeholder="Start Date">
           </div>
@@ -36,45 +32,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script>
-
-// Search functions
-function searchConcerts() {
-  var cityInput = $('#cityInput').val();
-  var startDateRaw = $('#startDate').val();
-  var endDateRaw = $('#endDate').val();
-
-  var startDate = moment(startDateRaw).format("YYYY-MM-DD");
-  var endDate = moment(endDateRaw).format("YYYY-MM-DD");
-  
-  var returnObject = {};
-
-  returnObject.cityInput = cityInput;
-  returnObject.startDate = startDate;
-  returnObject.endDate = endDate;
-
-  return returnObject;
-}
-
-
-$('#searchSubmitButton').on('click', function (event) {
-  console.log('inside click event');
-  event.preventDefault();
-  var query = searchConcerts();
-  console.log(query);
-
-  var queryURL = "localhost:5000/api/songkicklocation?" + "cityInput=" + query.cityInput;
-
-  
-  $.ajax({
-    url: queryURL,
-    method: 'GET',
-    headers: {'Access-Control-Allow-Origin': '*'}
-  }).then(function(response){
-    console.log(response);
-  });
-});
-
-    </script>
+    <script src="../../assets/javascript/jQuery.js"></script>
   </body>
 </html>

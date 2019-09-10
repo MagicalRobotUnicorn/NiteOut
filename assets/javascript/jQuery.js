@@ -490,14 +490,14 @@ function populateForm() {
 // $(document).ready(function(){
   populateForm();
 
-  var concertId = concertPage[0].id;
-  var latitude = concertPage[0].latitude;
-  var longitude = concertPage[0].longitude;
+  // var concertId = concertPage[0].id;
+  // var latitude = concertPage[0].latitude;
+  // var longitude = concertPage[0].longitude;
 
-  var $button = $('<button type="button" class="btn btn-primary btn-sm concertDetails">Details</button>');
-  $button.attr('id', concertId);
-  $button.attr('data-latitude', latitude);
-  $button.attr('data-longitude', longitude);
+  // var $button = $('<button type="button" class="btn btn-primary btn-sm concertDetails">Details</button>');
+  // $button.attr('id', concertId);
+  // $button.attr('data-latitude', latitude);
+  // $button.attr('data-longitude', longitude);
 
 
 
