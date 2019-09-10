@@ -23,7 +23,7 @@ const server = http.createServer((req, res) => {
   console.log(pathName[0], pathName[1]);
   var parametersObject = {};
 
-  if (pathName === pathName[0]) {
+  if (!pathName[1]) {
     pathName = pathName[0];
   }
   else {
@@ -38,6 +38,25 @@ const server = http.createServer((req, res) => {
     pathName = pathName[0];
     console.log(parametersObject);
 
+  }
+
+  if (pathName === '/api/songkicklocation') {
+    console.log('Accessed');
+    var city = parametersObject.cityInput;
+    var queryURL = 'https://api.songkick.com/api/3.0/search/locations.json?apikey=NBBXfIsma0WxaO7n&query=' + city;
+    fetch(queryURL).then(response => {
+      response.json().then(function (json) {
+        var content = ((json.resultsPage.results.location[0].metroArea.id));
+        console.log(content);
+        var returnObject = {};
+        var returnArray = []
+        returnObject.cityCode = content;
+        returnArray.push(returnObject);
+        console.log(returnObject);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(returnArray));
+      });
+    });
   }
 
   if (pathName === '/api/eventdetails') {
@@ -156,10 +175,40 @@ const server = http.createServer((req, res) => {
       });
     }
 
+    if (pathName === '/api/restaurantdetails') {
+      console.log('Accessed');
+      var idNumber = parametersObject.idNumber;
+      var queryURL = 'https://api.yelp.com/v3/businesses/' + idNumber;
+  
+  
+      fetch(queryURL, {
+        headers: {
+          Accept: 'application/json',
+          Authorization: 'bearer fPHJlT9V-VdXW7R2Tb4fViB-fynuvorWm-hy9usb8DfqWyk_EiDtV1-oANH7lwaAKjyisudQak2FRMDGp_tWbIRQER3iE1w-iTmIBAgb7bRA10RU5Ou4S8jh1PdlXXYx',
+        }, credentials: 'same-origin'
+      }).then(response => {
+        response.json().then(function (response) {
+          var individualResponse = {};
+  
+          individualResponse.id = response.id;
+          individualResponse.name = response.name;
+          individualResponse.image_url = response.image_url;
+  
+          individualResponse.categories = response.categories[0].title;
+  
+          individualResponse.rating = response.rating;
+  
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify(individualResponse));
+        });
+      });
+    }
 
   // Build file path
-  let filePath = path.join(__dirname, 'public', req.url === '/' ? '/sampleSearch.html' : req.url);
-
+  let filePath = path.join(__dirname, 'public', req.url === '/' ? '/sampleHTML/sampleSearch.html' : req.url);
+  // if (req.url === '/') {
+  //   filePath = path.join(__dirname, 'public', 'sampleHTML')
+  // }
 
   // Extension of the file
   let extname = path.extname(filePath);
@@ -186,67 +235,25 @@ const server = http.createServer((req, res) => {
       break;
   }
 
-  if (pathName === '/api/songkicklocation') {
-    console.log('Accessed');
-    var city = parametersObject.cityInput;
-    var queryURL = 'https://api.songkick.com/api/3.0/search/locations.json?apikey=NBBXfIsma0WxaO7n&query=' + city;
-    fetch(queryURL).then(response => {
-      response.json().then(function (json) {
-        var content = ((json.resultsPage.results.location[0].metroArea.id));
-        var returnObject = {};
-        returnObject.cityCode = content;
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify(returnObject));
-      });
-    });
-  }
-
-  if (pathName === '/api/restaurantdetails') {
-    console.log('Accessed');
-    var idNumber = parametersObject.idNumber;
-    var queryURL = 'https://api.yelp.com/v3/businesses/' + idNumber;
-
-
-    fetch(queryURL, {
-      headers: {
-        Accept: 'application/json',
-        Authorization: 'bearer fPHJlT9V-VdXW7R2Tb4fViB-fynuvorWm-hy9usb8DfqWyk_EiDtV1-oANH7lwaAKjyisudQak2FRMDGp_tWbIRQER3iE1w-iTmIBAgb7bRA10RU5Ou4S8jh1PdlXXYx',
-      }, credentials: 'same-origin'
-    }).then(response => {
-      response.json().then(function (response) {
-        var individualResponse = {};
-
-        individualResponse.id = response.id;
-        individualResponse.name = response.name;
-        individualResponse.image_url = response.image_url;
-
-        individualResponse.categories = response.categories[0].title;
-
-        individualResponse.rating = response.rating;
-
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify(individualResponse));
-      });
-    });
-  }
-
-
-  if (pathName === '/api/songkicklocation') {
-    console.log('Accessed');
-    var city = parametersObject.cityInput;
-    var queryURL = 'https://api.songkick.com/api/3.0/search/locations.json?apikey=NBBXfIsma0WxaO7n&query=' + city;
-    fetch(queryURL).then(response => {
-      response.json().then(function (json) {
-        var content = ((json.resultsPage.results.location[0].metroArea.id));
-        var returnObject = {};
-        returnObject.cityCode = content;
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify(returnObject));
-      });
-    });
-  }
+  fs.readFile(filePath, (err, content) => {
+    if (err) {
+      if (err.code == 'ENOENT') {
+        // page not found
+        fs.readFile(path.join(__dirname, 'public', '404.html'), (err, content) => {
+          res.writeHead(200, { 'Content-Type': 'text/html' });
+          res.end(content, 'utf8');
+        })
+      } else {
+        res.writeHead(500);
+        res.end(`Server Error: ${err.code}`)
+      }
+    } else {
+      console.log(content);
+      res.writeHead(200, {'Content-Type': contentType });
+      res.end(content, 'utf8');
+    }
+  });
 });
-
 
 
 const PORT = process.env.PORT || 5000;
