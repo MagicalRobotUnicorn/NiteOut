@@ -159,6 +159,24 @@ $('body').on('click', 'button.btn.btn-primary.btn-sm.restaurantSelect', function
 });
 });
 
+$('body').on('click', 'button.btn.btn-primary.btn-sm.confirmPlansButton', function(){
+  var concertId = $(this).attr('data-concertId');
+  var restaurantId = $(this).attr('data-restaurantId');
+  var storedEvents = JSON.parse(localStorage.getItem("storedEvents"));
+
+  var plansObject = {};
+  plansObject.concertId = concertId;
+  plansObject.restaurantId = restaurantId;
+
+  if (storedEvents === null) {
+    storedEvents = [];
+  }
+
+  storedEvents.push(plansObject);
+
+  localStorage.setItem("storedEvents", JSON.stringify(storedEvents));
+  alert("Event Saved");
+});
 // Both the restaurants and the clubs are organized into collections of 25
 
 // Display all events
