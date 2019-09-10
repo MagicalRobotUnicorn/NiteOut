@@ -40,7 +40,6 @@ $('#searchSubmitButton').on('click', function (event) {
 
 
 
-
 // Display functions
 function populateForm(concertPage) {
   for (var i = 0; i < concertPage.length; i++) {
@@ -71,18 +70,6 @@ function populateForm(concertPage) {
   }
 }
 
-
-
-  // var concertId = concertPage[0].id;
-  // var latitude = concertPage[0].latitude;
-  // var longitude = concertPage[0].longitude;
-
-  // var $button = $('<button type="button" class="btn btn-primary btn-sm concertDetails">Details</button>');
-  // $button.attr('id', concertId);
-  // $button.attr('data-latitude', latitude);
-  // $button.attr('data-longitude', longitude);
-
-
 function populateRestaurants(response, idNumber){
   console.log(response);
 
@@ -110,6 +97,24 @@ function populateRestaurants(response, idNumber){
   $('#restaurantResults').append($allRestaurants);
 }
 
+function confirmPlans(eventDetails, restaurantDetails){
+  var $newDiv = $('<div class="container confirmPlansContainer">');
+  
+  $newDiv.append('Great! So you are going to see: ' + eventDetails.displayName);
+  $newDiv.append('And then you are going to ' + restaurantDetails.name);
+
+  var $button = $('<button type="button" class="btn btn-primary btn-sm confirmPlansButton">Confirm</button>');
+  $button.attr('data-concertId', eventDetails.id);
+  $button.attr('data-restaurantId', restaurantDetails.id);
+
+  $newDiv.append($button);
+
+  $('#confirmPlans').append($newDiv);
+
+}
+
+// On back, call the metroId again
+
 $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function(){
 
   var idNumber = $(this).attr('id');
@@ -127,6 +132,32 @@ $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function()
   });
 });
 
+// On back, call the concert Id and get the restaurants
+
+$('body').on('click', 'button.btn.btn-primary.btn-sm.restaurantSelect', function(){
+  var concertId = $(this).attr('data-concertId');
+  var restaurantId = $(this).attr('data-restaurantId');
+  var eventDetails;
+  var restaurantDetails;
+
+  var queryURL = './api/eventdetails?idNumber=' + concertId;
+  $.ajax({
+    url: queryURL,
+    method: 'GET'
+  }).then(function(response){
+    eventDetails = response;
+
+    var secondQuery = './api/restaurantdetails?idNumber=' + restaurantId;
+    $.ajax({
+      url: secondQuery,
+      method: 'GET'
+    }).then(function(response){
+      restaurantDetails = response;
+      confirmPlans(eventDetails, restaurantDetails);
+  });
+  
+});
+});
 
 // Both the restaurants and the clubs are organized into collections of 25
 
