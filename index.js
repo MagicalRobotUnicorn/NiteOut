@@ -1,6 +1,8 @@
 const http = require('http');
 const path = require('path');
+const fetch = require('node-fetch')
 const fs = require('fs');
+const url = require('url');
 const apiCalls = require('./assets/javascript/apiScripts');
 
 // We need to create the routing urls for each of the responses
@@ -30,8 +32,37 @@ const server = http.createServer((req, res) => {
   //   ]
 
 
-  var searchParams = req.searchParams;
-  var pathName = req.pathname;
+  var pathName = req.url.split("?");
+  console.log(pathName[0], pathName[1]);
+  var parametersObject = {};
+
+  if (pathName === pathName[0]) {
+    pathName = pathName[0];
+  }
+  else {
+    var parameters = pathName[1].split('&');
+
+    for (var i = 0; i < parameters.length; i++){
+      var individualParameter = parameters[i].split('=');
+      parametersObject[individualParameter[0]] = individualParameter[1];
+    }
+
+    pathName = pathName[0];
+    console.log(parametersObject);
+
+  }
+
+  // Second parameters
+  // Split on '&'
+
+  // Create object from split on '='
+
+
+  // if (pathName === pathName[0]) {
+
+
+
+
  
   
 
@@ -42,16 +73,16 @@ const server = http.createServer((req, res) => {
   if (pathName === '/api/restaurantdetails') {
 
   }
-  if (pathName === '/api/songkicklocation') {
-    console.log("Triggered");
-    var city = searchParams.cityInput
-    var queryURL = 'https://api.songkick.com/api/3.0/search/locations.json?apikey=NBBXfIsma0WxaO7n&query=' + query;
-    fetch(queryURL).then(response => {
-      response.json().then(function (json) {
-        return JSON.stringify((json.resultsPage.results.location[0].metroArea.id));
-      });
-    });
-  }
+  // if (pathName === '/api/songkicklocation') {
+  //   console.log("Triggered");
+  //   var city = parametersObject.cityInput
+  //   var queryURL = 'https://api.songkick.com/api/3.0/search/locations.json?apikey=NBBXfIsma0WxaO7n&query=' + city;
+  //   fetch(queryURL).then(response => {
+  //     response.json().then(function (json) {
+  //       return JSON.stringify((json.resultsPage.results.location[0].metroArea.id));
+  //     });
+  //   });
+  // }
 
   if (pathName === '/api/songkickshows') {
 
@@ -94,41 +125,45 @@ const server = http.createServer((req, res) => {
       break;
   }
 
-  if (pathName === 'public/api/songkicklocation') {
+  if (pathName === '/api/songkicklocation') {
     console.log('Accessed');
-    var city = searchParams.cityInput;
-    var queryURL = 'https://api.songkick.com/api/3.0/search/locations.json?apikey=NBBXfIsma0WxaO7n&query=' + query;
+    var city = parametersObject.cityInput;
+    var queryURL = 'https://api.songkick.com/api/3.0/search/locations.json?apikey=NBBXfIsma0WxaO7n&query=' + city;
     fetch(queryURL).then(response => {
       response.json().then(function (json) {
-        var content = JSON.stringify((json.resultsPage.results.location[0].metroArea.id));
+        var content = ((json.resultsPage.results.location[0].metroArea.id));
+        var returnObject = {};
+        returnObject.cityCode = content;
+        console.log(content);
         res.writeHead(200, {'Content-Type': 'application/json'});
-        res.end(content, 'utf8');
+        res.end(returnObject, 'utf8');
       });
     });
   }
   // Returning AJAX from 
   // Read file
-  fs.readFile(filePath, (err, content) => {
-    if (err) {
-      if (err.code == 'ENOENT') {
-        // page not found
-        fs.readFile(path.join(__dirname, 'public', '404.html'), (err, content) => {
-          res.writeHead(200, { 'Content-Type': 'text/html' });
-          res.end(content, 'utf8');
-        })
-      } else {
-        res.writeHead(500);
-        res.end(`Server Error: ${err.code}`)
-      }
-    } else {
-      // Successful
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.end(content, 'utf8');
-    }
-  }
-)
-});
-
+//   fs.readFile(filePath, (err, content) => {
+//     if (err) {
+//       if (err.code == 'ENOENT') {
+//         // page not found
+//         fs.readFile(path.join(__dirname, 'public', '404.html'), (err, content) => {
+//           res.writeHead(200, { 'Content-Type': 'text/html' });
+//           res.end(content, 'utf8');
+//         })
+//       } else {
+//         res.writeHead(500);
+//         res.end(`Server Error: ${err.code}`)
+//       }
+//     } else {
+//       // Successful
+//       res.writeHead(200, {'Content-Type': 'text/html'});
+//       res.end(content, 'utf8');
+//     }
+//   }
+// )
+// });
+}
+);
 const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
