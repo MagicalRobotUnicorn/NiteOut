@@ -51,15 +51,15 @@ const server = http.createServer((req, res) => {
         var returnObject = {};
         var returnArray = []
         returnObject.cityCode = content;
-        returnArray.push(returnObject);
+
         console.log(returnObject);
         res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify(returnArray));
+        res.end(JSON.stringify(returnObject));
       });
     });
   }
 
-  if (pathName === '/api/eventdetails') {
+  else if (pathName === '/api/eventdetails') {
     var idNumber = parametersObject.idNumber;
     var queryURL = 'https://api.songkick.com/api/3.0/events/' + idNumber + '.json?apikey=NBBXfIsma0WxaO7n';
 
@@ -93,7 +93,7 @@ const server = http.createServer((req, res) => {
     });
   }
 
-    if (pathName === '/api/songkickshows') {
+    else if (pathName === '/api/songkickshows') {
       var location = parametersObject.location;
       var min_date = parametersObject.min_date;
       var max_date = parametersObject.max_date;
@@ -141,7 +141,7 @@ const server = http.createServer((req, res) => {
     }
   
 
-  if (pathName === '/api/yelpinformation') {
+  else if (pathName === '/api/yelpinformation') {
     var latitude = parametersObject.latitude;
     var longitude = parametersObject.longitude;
     var queryURL = 'https://api.yelp.com/v3/businesses/search?latitude=' + latitude + '&longitude=' + longitude;
@@ -175,7 +175,7 @@ const server = http.createServer((req, res) => {
       });
     }
 
-    if (pathName === '/api/restaurantdetails') {
+    else if (pathName === '/api/restaurantdetails') {
       console.log('Accessed');
       var idNumber = parametersObject.idNumber;
       var queryURL = 'https://api.yelp.com/v3/businesses/' + idNumber;
@@ -204,6 +204,7 @@ const server = http.createServer((req, res) => {
       });
     }
 
+  else {
   // Build file path
   let filePath = path.join(__dirname, 'public', req.url === '/' ? '/sampleHTML/sampleSearch.html' : req.url);
   // if (req.url === '/') {
@@ -253,6 +254,7 @@ const server = http.createServer((req, res) => {
       res.end(content, 'utf8');
     }
   });
+}
 });
 
 

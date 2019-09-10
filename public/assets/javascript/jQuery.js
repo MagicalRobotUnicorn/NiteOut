@@ -16,8 +16,6 @@ function searchConcerts() {
   var startDate = moment(startDateRaw).format("YYYY-MM-DD");
   var endDate = moment(endDateRaw).format("YYYY-MM-DD");
 
-  
-
   var queryURL = './api/songkicklocation' + '?cityInput=' + cityInput;
 
   $.ajax({
@@ -30,12 +28,9 @@ function searchConcerts() {
       url: secondURL,
       method: 'GET'
     }).then(function(response) {
-      console.log(response);
+      populateForm(response);
     })
   });
-
-  
-
 }
 
 $('#searchSubmitButton').on('click', function (event) {
@@ -47,7 +42,7 @@ $('#searchSubmitButton').on('click', function (event) {
 
 
 // Display functions
-function populateForm() {
+function populateForm(concertPage) {
   for (var i = 0; i < concertPage.length; i++) {
     var $firstCol = $('<div class="col-6-sm">');
     var $secondCol = $('<div class="col-6-sm">');
