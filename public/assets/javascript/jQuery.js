@@ -83,11 +83,25 @@ function populateForm(concertPage) {
   // $button.attr('data-longitude', longitude);
 
 
+function populateRestaurants(response){
+  console.log(response);
+}
 
 $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function(){
-  console.log("Id sent to function: " + $(this).attr('id'));
-  console.log("Longitude: " + $(this).attr('data-longitude'));
-  console.log("Latitude: " + $(this).attr('data-latitude'));
+
+  var idNumber = $(this).attr('id');
+  var longitude = $(this).attr('data-longitude');
+  var latitude = $(this).attr('data-latitude');
+
+  var queryURL = './api/songkicklocation' + '?cityInput=' + cityInput;
+
+  var queryURL = './api/yelpinformation' + '?latitude=' +latitude + "&longitude=" + longitude;
+  $.ajax({
+    url: queryURL,
+    method: 'GET'
+  }).then(function(response){
+    populateRestaurants(response);
+  });
 });
 
 
