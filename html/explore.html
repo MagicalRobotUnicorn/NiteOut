@@ -169,13 +169,13 @@
     </div>
     <div class="form-row">
       <div class="col-7">
-        <input type="text" class="form-control" placeholder="City">
+        <input type="text" class="form-control" id="eventCity" placeholder="City">
       </div>
       <div class="col">
-        <input type="text" class="form-control" placeholder="State">
+        <input type="text" class="form-control" id="eventState" placeholder="State">
       </div>
       <div class="col">
-        <input type="text" class="form-control" placeholder="Zip">
+        <!-- <input type="text" class="form-control" placeholder="Zip"> -->
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
@@ -231,6 +231,29 @@
       </div>
     </div>
   </div>
+  <div class="row">
+      <div class="col-sm-6">
+        <div class="card" id="eventCard">
+          <div class="card-body" id="eventCardBody">
+            <h5 class="card-title">Events near you</h5>
+            
+            <button class="btn btn-primary" id="eventButton">Book it</Button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card" id=BarCard>
+          <div class="card-body" id="barCardBody">
+            <h5 class="card-title">Resteraunts and Bars nearby</h5>
+            
+            <button class="btn btn-primary" id="resterauntButton">Set it</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    
+
   <script src="../assets/javascript/exploreScript.js"></script>
   <script src="../assets/javascript/apiScripts.js"></script>
   <script src="../assets/javascript/functioningScripts.js"></script>
