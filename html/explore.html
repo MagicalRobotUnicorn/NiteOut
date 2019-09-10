@@ -232,27 +232,80 @@
     </div>
   </div>
   <div class="row">
-      <div class="col-sm-6">
-        <div class="card" id="eventCard">
-          <div class="card-body" id="eventCardBody">
-            <h5 class="card-title">Events near you</h5>
-            
-            <button class="btn btn-primary" id="eventButton">Book it</Button>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="card" id=BarCard>
-          <div class="card-body" id="barCardBody">
-            <h5 class="card-title">Resteraunts and Bars nearby</h5>
-            
-            <button class="btn btn-primary" id="resterauntButton">Set it</button>
-          </div>
+    <div class="col-sm-6">
+      <div class="card" id="eventCard">
+        <div class="card-body" id="eventCardBody">
+          <h5 class="card-title">Events near you</h5>
+
+          <button class="btn btn-primary" id="eventButton">Book it</Button>
         </div>
       </div>
     </div>
-      
-    
+    <div class="col-sm-6">
+      <div class="card" id=BarCard>
+        <div class="card-body" id="barCardBody">
+          <h5 class="card-title">Resteraunts and Bars nearby</h5>
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-modal-lg">Checkout
+            modal</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade bd-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content modal-lg">
+        <div class="form-group mb-3">
+          <label for="email1">Email Address</label>
+          <input type="email" class="form-control" name="workplz" id="emailTest" aria-describedby="email1"
+            placeholder="Email address">
+          <small id="email1" class="form-text text-muted">Don't worry we won't share</small>
+        </div>
+        <div class="form-group mb-3">
+          <label for="subject">subject</label>
+          <input type="text" class="form-control" id="subjectTest" aria-describedby="subject1"
+            placeholder="Your night is ready for you">
+          <small id="subjectTest" class="form-text text-muted">Enter a title that will get them excited.</small>
+        </div>
+        <div class="form-group mb-3">
+          <label for="comment">Let them know the plan</label>
+          <textarea class="form-control" rows="10" id="comment"></textarea>
+        </div>
+        <button class="btn btn-primary" style="float:right;" id="mailto"><a id="mailer" href="#">Seize the
+            night</button>
+        <small id="terms" class="form-text text-muted">By clicking you agree to the terms and conditions we
+          have not exstablished yet.</small>
+      </div>
+      ...
+    </div>
+  </div>
+  </div>
+
+  <script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#mailto").on('click', function () {
+            console.log("I work");
+
+            var email = $("#emailTest").val().trim();
+            var subject = $("#subjectTest").val().trim();
+            var content = $("#comment").val().trim();
+            console.log(content);
+            console.log(email);
+            console.log(subject);
+
+            $("#mailer").attr('href', 'mailto:' + email + '?subject=' + subject + '&body=' + content);
+
+
+
+        });
+    });
+
+</script>
+
+
 
   <script src="../assets/javascript/exploreScript.js"></script>
   <script src="../assets/javascript/apiScripts.js"></script>
