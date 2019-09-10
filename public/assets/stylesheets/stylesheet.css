@@ -65,23 +65,26 @@
 .restaurant {
   width: 400px;
   height: 250px;
-  border: 5px double yellow;
-  border-radius: 20px;
-  z-index: 1000;
+  border: 3px black;
+  border-radius: 10px;
   margin: 20px;
   display: inline-block;
+  background: #ffe6b3;
 }
 
 .restaurantImage {
-  border: 3px solid yellow;
+  border: 1px solid black;
   border-radius: 5px;
   padding: 5px;
 
-  width: 150px;
+  max-width: 100px;
   height: auto;
   margin-left: 20px;
   margin-right: auto;
   margin-top: 35px;
   margin-bottom: 20px;
+}
 
+.interiorRestaurant {
+  display: inline-block;
 }

@@ -188,9 +188,11 @@ $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function (
 
 // On back, call the concert Id and get the restaurants
 
+// Changed the data-concertId to concertid / restaurantid....
+// The function before hasn't changed *******
 $('body').on('click', 'button.btn.btn-primary.btn-sm.restaurantSelect', function () {
-  var concertId = $(this).attr('data-concertId');
-  var restaurantId = $(this).attr('data-restaurantId');
+  var concertId = $(this).attr('data-concertid');
+  var restaurantId = $(this).attr('data-restaurantid');
   var eventDetails;
   var restaurantDetails;
 
