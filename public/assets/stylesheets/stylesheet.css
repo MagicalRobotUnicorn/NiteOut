@@ -32,30 +32,57 @@
   background-color: red; 
 }
 
+#introScreen {
+  
+}
+
+#eventsDisplay {
+  display: none;
+}
+
+#RSVPtableCol {
+  display: none;
+}
+
 #selectedShow {
   display: none;
 }
 
 #concertSearchResults {
-  /* display: none; */
+  display: none;
 }
 
 #restaurantResults {
-  /* display: none; */
+  display: none;
 }
 
 #confirmPlans {
-  /* display: none; */
+  display: none;
 }
 
 #loadingScreen {
-  /* display: none; */
+  display: none;
 }
 
 #campfire {
   width: 100%;
   height: auto;
   display: inline-block;
+}
+
+#songkickphoto {
+  width: 25%;
+  height: auto;
+  margin-left: auto;
+  margin-right: 10%;
+}
+
+#yelpphoto {
+  width: 25%;
+  height: auto;
+  margin-top: -10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #introParagraph {
@@ -65,10 +92,11 @@
 .restaurant {
   width: 400px;
   height: 250px;
-  border: 3px black;
+  border: 5px black;
   border-radius: 10px;
   margin: 20px;
   display: inline-block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background: #ffe6b3;
 }
 
@@ -76,15 +104,18 @@
   border: 1px solid black;
   border-radius: 5px;
   padding: 5px;
-
-  max-width: 100px;
-  height: auto;
-  margin-left: 20px;
+  max-width: 150px;
+  max-height: 200px;
+  margin-left: auto;
   margin-right: auto;
-  margin-top: 35px;
-  margin-bottom: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .interiorRestaurant {
   display: inline-block;
+}
+
+div#secondCol.col-6.interiorRestaurant {
+  margin-top: 40px;
 }

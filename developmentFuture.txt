@@ -1,15 +1,15 @@
 Where we need to be by noon:
 
-3. Use the leftover resources from the starwars application to code the restaurant divs
 4. Insert the necessary logos from yelp and songkick to the displays
 
 5. Design an events page
-6. Reuse code from the giftastic assignment to display the individual events
-7. Design 404 page
 
 8. Edge cases (no area found, no concerts found, no restaurants found
 9. Pagination buttons for scrolling through shows
-10. Back button functions as outlined in the comments
+10. Back button functions as outlined in the comments (just messing with the visability)
+
+
+
 
 <a href="https://www.freevector.com/music-around-campfire-29379#">FreeVector.com</a>
 

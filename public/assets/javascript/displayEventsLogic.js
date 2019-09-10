@@ -42,3 +42,7 @@ function displayEvents() {
     }
   }
 }
+
+$('body').on('click', 'button.btn.btn-primary.btn-sm.backtoHome', function(){
+  window.location(path.join(__dirname, '..', '/public/html/index.html'));
+});

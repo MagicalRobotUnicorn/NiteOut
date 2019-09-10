@@ -20,12 +20,16 @@ function searchConcerts() {
       method: 'GET'
     }).then(function (response) {
       populateForm(response);
+      toggledisplay('loadingScreen');
+      toggledisplay('concertSearchResults');
     })
   });
 }
 
 $('#searchSubmitButton').on('click', function (event) {
   event.preventDefault();
+  toggledisplay('introScreen');
+  toggledisplay('loadingScreen');
   searchConcerts();
 });
 
@@ -75,18 +79,12 @@ function populateRestaurants(response, idNumber) {
 
     $genericRestaurant.append('<div class="row" id="row">');
 
-    $genericRestaurant.find('#row').append('<div class="col-6" id="firstCol">');
-    $genericRestaurant.find('#row').append('<div class="col-6" id="secondCol">');
-
     var $firstCol = $('<div class="col-6 interiorRestaurant" id="firstCol">');
     var $secondCol = $('<div class="col-6 interiorRestaurant" id="secondCol">');
 
-    // Set up as -> $firstCol -> add content -> append to container
-    // $secondCol -> add content -> append to container
-
 
     $firstCol.append('<img src="' + response[i].image_url + '" class="restaurantImage">');
-    $secondCol.append('<div class="restaurantName">' + response[i].name + '</div>');
+    $secondCol.append('<div class="restaurantName"><b>' + response[i].name + '</b></div>');
     $secondCol.append('<div class="restaurantCategory">' + response[i].categories + '</div>');
 
     // use response to generate stars
@@ -149,6 +147,8 @@ function populateRestaurants(response, idNumber) {
 
   }
   $('#restaurantResults').append($allRestaurants);
+  toggledisplay('loadingScreen');
+  toggledisplay('restaurantResults');
 }
 
 function confirmPlans(eventDetails, restaurantDetails) {
@@ -164,13 +164,21 @@ function confirmPlans(eventDetails, restaurantDetails) {
   $newDiv.append($button);
 
   $('#confirmPlans').append($newDiv);
+  toggledisplay('loadingScreen');
+  toggledisplay('confirmPlans');
+}
 
+function toggledisplay(elementID) {
+        (function(style) {
+            style.display = style.display === 'none' ? '' : 'none';
+        })(document.getElementById(elementID).style);
 }
 
 // On back, call the metroId again
 
 $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function () {
-
+  toggledisplay('concertSearchResults');
+  toggledisplay('loadingScreen');
   var idNumber = $(this).attr('id');
   var longitude = $(this).attr('data-longitude');
   var latitude = $(this).attr('data-latitude');
@@ -191,6 +199,8 @@ $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function (
 // Changed the data-concertId to concertid / restaurantid....
 // The function before hasn't changed *******
 $('body').on('click', 'button.btn.btn-primary.btn-sm.restaurantSelect', function () {
+  toggledisplay('restaurantResults');
+  toggledisplay('loadingScreen');
   var concertId = $(this).attr('data-concertid');
   var restaurantId = $(this).attr('data-restaurantid');
   var eventDetails;
@@ -232,6 +242,8 @@ $('body').on('click', 'button.btn.btn-primary.btn-sm.confirmPlansButton', functi
 
   localStorage.setItem("storedEvents", JSON.stringify(storedEvents));
   alert("Event Saved");
+  toggledisplay('confirmPlans');
+  toggledisplay('RSVPtableCol');
 });
 
 
