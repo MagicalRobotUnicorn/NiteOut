@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    NiteOut
+  </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lexend+Tera&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/stylesheets/stylesheet.css">
+</head>
+
+<body>
+  <div id="headerImage">NiteOut</div>
+  <div class="container">
+    <form class="form-inline" role="form">
+      <div class="form-group">
+        <!-- <label for="city">City:</label> -->
+        <input type="text" class="form-control" id="cityInput" placeholder="Enter the city and state (IE Portland, OR)">
+      </div>
+      <div class="form-group">
+        <!-- <label for="startDate">Start Date:</label> -->
+        <input type="text" class="form-control" id="startDate" placeholder="Start Date">
+      </div>
+      <div class="form-group">
+        <!-- <label for="city">End Date:</label> -->
+        <input type="text" class="form-control" id="endDate" placeholder="End Date">
+      </div>
+      <button id="searchSubmitButton" class="btn btn-primary">Submit</button>
+    </form>
+    <div id="loadingScreen">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+        <span>Loading Content</span>
+      </div>
+    </div>
+    <div id="selectedShow">
+
+    </div>
+    <div id="concertSearchResults">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8" id="tableCol">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Event</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="restaurantResults">
+
+    </div>
+    <div id="confirmPlans">
+
+    </div>
+    <div class="row" id="introScreen">
+        <div class="col-4">
+          <img src="./assets/images/campfire.jpg" id="campfire">
+        </div>
+        <div class="col-7" id="introParagraph">
+          <h2>Welcome to Niteout!</h2>
+          <p>We aim to provide an easy way to plan a NiteOut.</p>
+          <p>To use our application, simply input the city, state, and timeframe that you are looking for events.</p>
+          <p>Our application will showcase nearby places to grab a bite to eat, or a drink.</p>
+          <p>Select an establishment, confirm your plans, and add it to your calender!</p>
+          <p>Already a user?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="../../assets/javascript/jQuery.js"></script>
+
+</body>
+
+</html>
