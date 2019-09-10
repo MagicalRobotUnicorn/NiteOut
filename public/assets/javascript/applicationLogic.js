@@ -71,33 +71,45 @@ function populateRestaurants(response, idNumber) {
 
   for (var i = 0; i < response.length; i++) {
     var $genericRestaurant = $('<div class="col-3">').addClass('restaurant');
-    $genericRestaurant.append('<div class="row" id="row' + i + '">');
+    $genericRestaurant.addClass('container');
+
+    $genericRestaurant.append('<div class="row" id="row">');
+
     $genericRestaurant.find('#row').append('<div class="col-6" id="firstCol">');
     $genericRestaurant.find('#row').append('<div class="col-6" id="secondCol">');
 
+    var $firstCol = $('<div class="col-6" id="firstCol">');
+    var $secondCol = $('<div class="col-6" id="secondCol">');
 
-    $genericRestaurant.find('#firstCol').append('<img src="' + response[i].image_url + ' class="restaurantImage">');
-    $genericRestaurant.find('#secondCol').append('<div class="restaurantName">' + response[i].name + '</div>');
-    $genericRestaurant.find('#secondCol').append('<div class="restaurantCategory">' + response[i].categories + '</div>');
+    // Set up as -> $firstCol -> add content -> append to container
+    // $secondCol -> add content -> append to container
+
+
+    $firstCol.append('<img src="' + response[i].image_url + '" class="restaurantImage">');
+    $secondCol.append('<div class="restaurantName">' + response[i].name + '</div>');
+    $secondCol.append('<div class="restaurantCategory">' + response[i].categories + '</div>');
     // use response to generate stars
 
     var starFile;
+    console.log(response[i].rating);
+    if ((response[i].rating) % (response[i].rating) != 0){
 
-    if (response[i].rating[0] % response[i].rating[0] != 0){
       starFile = './assets/images/yelp_stars/web_and_ios/small/' + 'small_' + response[i].rating[0] + '_half.png';
     }
     else {
       starFile = './assets/images/yelp_stars/web_and_ios/small/' + 'small_' + response[i].rating[0] + '_half.png';
     }
 
-    $genericRestaurant.find('#secondCol').append('<div class="restaurantRating"><img src="' + starFile + '" class="starImage">');
-    
+    $secondCol.append('<div class="restaurantRating"><img src="' + starFile + '" class="starImage">');
+
     // Append button here
     var $button = $('<button type="button" class="btn btn-primary btn-sm restaurantSelect">Select</button>');
     $button.attr('data-concertId', idNumber);
     $button.attr('data-restaurantId', response[i].id);
-    $genericRestaurant.find('#secondCol').append('<div class="buttonArea">');
-    $genericRestaurant.find('.buttonArea').append($button);
+    $secondCol.append($button);
+
+    $genericRestaurant.append($firstCol);
+    $genericRestaurant.append($secondCol);
 
     $allRestaurants.append($genericRestaurant);
 
