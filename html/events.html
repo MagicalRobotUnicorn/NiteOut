@@ -7,8 +7,59 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
-<body data-spy="scroll" data-target="#myScrollspy" data-offset="15">
+<html>
+<head>
+<title>Search Box Example 1</title>
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
+<!-- CSS styles for standard search box -->
+<style type="text/css">
+	#tfheader{
+		background-color:#ebc3ef;
+	}
+	#tfnewsearch{
+		float:right;
+		padding:60px;
+	}
+	.tftextinput{
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		border:1px solid #8800a3; border-right:0px;
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+	}
+	.tfbutton {
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		outline: none;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+		color: #ffffff;
+		border: solid 1px #6f00a3; border-right:0px;
+		background: #ab00cd;
+		background: -webkit-gradient(linear, left top, left bottom, from(#ee00da), to(#a5009d));
+		background: -moz-linear-gradient(top,  #d200ee,  #7e00a5);
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;
+	}
+	.tfbutton:hover {
+		text-decoration: none;
+		background: #a700ad;
+		background: -webkit-gradient(linear, left top, left bottom, from(#cc00cc), to(#76008e));
+		background: -moz-linear-gradient(top,  #7a00cc,  #66008e);
+	}
+	/* Fixes submit button height problem in Firefox */
+	.tfbutton::-moz-focus-inner {
+	  border: 0;
+	}
+	.tfclear{
+		clear:both;
+	}
+</style><body data-spy="scroll" data-target="#myScrollspy" data-offset="15">
   <header>
     <!-- Top nav html -->
     <!-- Working to add a scrolling nav bar -->
