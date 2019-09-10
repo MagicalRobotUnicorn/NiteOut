@@ -31,6 +31,7 @@ const server = http.createServer((req, res) => {
 
   var searchParams = req.searchParams;
   var pathName = req.pathname;
+ 
   
 
   if (pathName === '/api/eventdetails') {
@@ -41,9 +42,14 @@ const server = http.createServer((req, res) => {
 
   }
   if (pathName === '/api/songkicklocation') {
+    console.log("Triggered");
     var city = searchParams.cityInput
-    var code = apiCalls.getSongkickLocation(city);
-    return code;
+    var queryURL = 'https://api.songkick.com/api/3.0/search/locations.json?apikey=NBBXfIsma0WxaO7n&query=' + query;
+    fetch(queryURL).then(response => {
+      response.json().then(function (json) {
+        return JSON.stringify((json.resultsPage.results.location[0].metroArea.id));
+      });
+    });
   }
 
   if (pathName === '/api/songkickshows') {
@@ -58,7 +64,7 @@ const server = http.createServer((req, res) => {
   }
 
   // Build file path
-  let filePath = path.join(__dirname, 'public', req.url === '/' ? './sampleHTML/sampleSearch.html' : './sampleHTML/' + req.url );
+  let filePath = path.join(__dirname, 'public', req.url === '/' ? '/sampleSearch.html' :  req.url );
 
   console.log(filePath);
 
@@ -87,6 +93,18 @@ const server = http.createServer((req, res) => {
       break;
   }
 
+  if (pathName === 'public/api/songkicklocation') {
+    console.log('Accessed');
+    var city = searchParams.cityInput
+    var queryURL = 'https://api.songkick.com/api/3.0/search/locations.json?apikey=NBBXfIsma0WxaO7n&query=' + query;
+    fetch(queryURL).then(response => {
+      response.json().then(function (json) {
+        var content = JSON.stringify((json.resultsPage.results.location[0].metroArea.id));
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.end(content, 'utf8');
+      });
+    });
+  }
   // Returning AJAX from 
   // Read file
   fs.readFile(filePath, (err, content) => {
