@@ -83,8 +83,31 @@ function populateForm(concertPage) {
   // $button.attr('data-longitude', longitude);
 
 
-function populateRestaurants(response){
+function populateRestaurants(response, idNumber){
   console.log(response);
+
+  var $allRestaurants = $('<div>');
+  for (var i = 0; i < response.length; i++){
+    var $newDiv = $('<div class="eachRestaurant container">');
+    var $pictureDiv = $('<div class="col-4">');
+    $pictureDiv.append('<img src="' + response[i].image_url + '" class="restaurantImage">');
+    var $infoDiv = $('<div class="col-8">');
+    $infoDiv.append('<h2 class="restaurantName">' + response[i].name + '</h2>');
+    $infoDiv.append('<h2 class="restaurantCategory">' + response[i].categories + '</h2>');
+    $infoDiv.append('<h2 class="restaurantRating">' + response[i].rating + '</h2>');
+
+    var $button = $('<button type="button" class="btn btn-primary btn-sm restaurantSelect">Select</button>');
+    $button.attr('data-concertId', idNumber);
+    $button.attr('data-restaurantId', response[i].id);
+
+    $infoDiv.append($button);
+    $newDiv.append($pictureDiv);
+    $newDiv.append($infoDiv);
+    $newDiv.append($button);
+
+    $allRestaurants.append($newDiv);
+  }
+  $('#restaurantResults').append($allRestaurants);
 }
 
 $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function(){
@@ -100,7 +123,7 @@ $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function()
     url: queryURL,
     method: 'GET'
   }).then(function(response){
-    populateRestaurants(response);
+    populateRestaurants(response, idNumber);
   });
 });
 
