@@ -483,7 +483,7 @@ function populateForm() {
     $concertCell.html($button);
     $newRow.append($concertCell);
 
-    $('#tableBody').append($newRow);
+    $('#eventCard').append($newRow);
   }
 }
 
