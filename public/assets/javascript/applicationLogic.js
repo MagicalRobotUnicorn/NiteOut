@@ -14,22 +14,19 @@ function searchConcerts() {
     method: 'GET'
   }).then(function (response) {
     console.log(response);
-    var secondURL = '/api/songkickshows?location=' + response.cityCode + '&min_date=' + startDate + '&max_date=' + endDate + '&page=1';
+    var secondURL = './api/songkickshows?location=' + response.cityCode + '&min_date=' + startDate + '&max_date=' + endDate + '&page=1';
     $.ajax({
       url: secondURL,
       method: 'GET'
     }).then(function (response) {
       populateForm(response);
-      toggledisplay('loadingScreen');
-      toggledisplay('concertSearchResults');
     })
   });
 }
 
 $('#searchSubmitButton').on('click', function (event) {
   event.preventDefault();
-  toggledisplay('introScreen');
-  toggledisplay('loadingScreen');
+  $('#introScreen').hide();
   searchConcerts();
 });
 
@@ -63,6 +60,7 @@ function populateForm(concertPage) {
 
     $('#tableBody').append($newRow);
   }
+  $("#concertSearchResults").removeAttr("style").show();
 }
 
 function populateRestaurants(response, idNumber) {
@@ -147,8 +145,7 @@ function populateRestaurants(response, idNumber) {
 
   }
   $('#restaurantResults').append($allRestaurants);
-  toggledisplay('loadingScreen');
-  toggledisplay('restaurantResults');
+  $("#restaurantResults").removeAttr("style").show();
 }
 
 function confirmPlans(eventDetails, restaurantDetails) {
@@ -164,21 +161,63 @@ function confirmPlans(eventDetails, restaurantDetails) {
   $newDiv.append($button);
 
   $('#confirmPlans').append($newDiv);
-  toggledisplay('loadingScreen');
-  toggledisplay('confirmPlans');
+  $("#confirmPlans").removeAttr("style").show();
 }
 
-function toggledisplay(elementID) {
-        (function(style) {
-            style.display = style.display === 'none' ? '' : 'none';
-        })(document.getElementById(elementID).style);
+function displayEvents() {
+
+  var storedEvents = JSON.parse(localStorage.getItem("storedEvents"));
+  console.log(storedEvents);
+  if (storedEvents.length > 0) {
+    $('#eventsDisplay').hide();
+
+    for (var i = 0; i < storedEvents.length; i++) {
+      var $newRow = $('<tr>');
+      var concertId = storedEvents[i].concertId;
+      var restaurantId = storedEvents[i].restaurantId;
+      var eventDetails;
+      var restaurantDetails;
+
+      var queryURL = './api/eventdetails?idNumber=' + concertId;
+      $.ajax({
+        url: queryURL,
+        method: 'GET'
+      }).then(function (response) {
+        eventDetails = response;
+
+        var secondQuery = './api/restaurantdetails?idNumber=' + restaurantId;
+        $.ajax({
+          url: secondQuery,
+          method: 'GET'
+        }).then(function (response) {
+          restaurantDetails = response;
+          
+          var concertDisplay = eventDetails.displayName;
+          var restaurantDisplay = restaurantDetails.name;
+
+          var $concertTD = $('<td>');
+          var $restaurantTD = $('<td>');
+          $concertTD.append(concertDisplay);
+          $restaurantTD.append(restaurantDisplay);
+          $newRow.append($concertTD);
+          $newRow.append($restaurantTD);
+
+          $('#RSVPtableBody').append($newRow);
+        });
+
+      })
+    }
+    $('#RSVPtableCol').show();
+  }
+  else {
+    $('#eventsTable').hide();
+  }
 }
 
 // On back, call the metroId again
 
 $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function () {
-  toggledisplay('concertSearchResults');
-  toggledisplay('loadingScreen');
+  $('#concertSearchResults').hide();
   var idNumber = $(this).attr('id');
   var longitude = $(this).attr('data-longitude');
   var latitude = $(this).attr('data-latitude');
@@ -199,8 +238,7 @@ $('body').on('click', 'button.btn.btn-primary.btn-sm.concertDetails', function (
 // Changed the data-concertId to concertid / restaurantid....
 // The function before hasn't changed *******
 $('body').on('click', 'button.btn.btn-primary.btn-sm.restaurantSelect', function () {
-  toggledisplay('restaurantResults');
-  toggledisplay('loadingScreen');
+  $("#restaurantResults").hide();
   var concertId = $(this).attr('data-concertid');
   var restaurantId = $(this).attr('data-restaurantid');
   var eventDetails;
@@ -242,8 +280,8 @@ $('body').on('click', 'button.btn.btn-primary.btn-sm.confirmPlansButton', functi
 
   localStorage.setItem("storedEvents", JSON.stringify(storedEvents));
   alert("Event Saved");
-  toggledisplay('confirmPlans');
-  toggledisplay('RSVPtableCol');
+  $('#confirmPlans').hide();
+  displayEvents();
 });
 
 
