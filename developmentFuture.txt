@@ -1,8 +1,6 @@
 Where we need to be by noon:
 
-4. Insert the necessary logos from yelp and songkick to the displays
 
-5. Design an events page
 
 8. Edge cases (no area found, no concerts found, no restaurants found
 9. Pagination buttons for scrolling through shows

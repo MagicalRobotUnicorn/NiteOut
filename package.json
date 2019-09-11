@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/MagicalRobotUnicorn/NiteOut/issues"
   },
-  "homepage": "https://github.com/MagicalRobotUnicorn/NiteOut#readme"
+  "homepage": "https://github.com/MagicalRobotUnicorn/NiteOut#readme",
+  "engines" : {
+    "node": "10.16.0"
+  }
 }

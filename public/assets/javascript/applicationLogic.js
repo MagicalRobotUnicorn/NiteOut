@@ -30,6 +30,12 @@ $('#searchSubmitButton').on('click', function (event) {
   searchConcerts();
 });
 
+$('#button.btn.btn-primary.btn-sm.backtoSearch').on('click', function (event) {
+  location.reload();
+});
+
+
+
 
 
 // Display functions
