@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/eazimms/Group-project-#readme",
   "dependencies": {
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "node-fetch": "^2.6.0"
   }
 }
